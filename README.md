@@ -7,6 +7,7 @@
 |first_name_furigana|string|null: false|
 |last_name|string|null: false|
 |last_name_furigana|string|null: false|
+|birthday|date|null: false|
 |profile_photo|string|null: false|
 |tel_number|string|null: false|
 |introduction|text|
