@@ -1,1 +1,59 @@
-test test
+%body
+  %header.render.using.kuriyamasan.format
+    = icon('fas', 'dice-d6')
+
+  .wrapper-purchase-confirm
+    %h2.title
+      購入内容の確認
+    
+    .product-info
+      %img.product-info__photo{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656"}/
+      .product-info__name
+
+      .product-info__price
+        ¥12,000
+      .main-content__tax 
+        (税込)
+      .main-content__shipFee 
+        送料込み
+
+    .product-price
+      .product-price__title
+        支払い金額
+      .product-price__amount
+        ¥12,000
+
+    .purchase-method
+      .purchase-method__titile
+        支払い方法
+      .purchase-method__how
+        .purchase-method__how--name
+          クレジットカード
+        .purchase-method__how--number
+          1111-1111-1111
+        .purchase-method__how--exp
+          有効期限 07 / 22
+        .purchase-method__how--logo
+          = icon('fas', 'credit-card')
+        .change
+          変更する
+
+    .purchase-shipping
+      .purchase-shipping__where
+        配送先
+        .purchase-shipping__where--pcode
+          〒321-0634
+        .purchase-shipping__where--address
+          栃木県 那須烏山市 野上988-1 プラシードC 101号
+        .purchase-shipping__where--name
+          Robby Naish
+      .change
+        変更する
+
+    .purchase-btn
+      = link_to product_index_path "購入する"
+
+        
+
+
+
