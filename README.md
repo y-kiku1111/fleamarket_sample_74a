@@ -33,6 +33,7 @@
 |days|integer|null: false|
 |user|reference|foreign_key: true, null: false|
 |category|reference|foreign_key: true, null: false|
+|brand|reference|foreign_key: true, null: false|
 
 ### Association
 - has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
