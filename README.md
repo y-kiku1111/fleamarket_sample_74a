@@ -11,16 +11,14 @@
 |profile_photo|string|null: false|
 |tel_number|string|null: false|
 |introduction|text|
-|address|reference|foreign_key: true, null: false|
-|photo|reference|foreign_key: true, null: false|
+
 
 ### Association
 - has_many :likes
 - has_many :products
 - has_many :comments
 - has_many :cards
-- belongs_to :address
-- belongs_to :photo
+- has_one :address
 
 
 ## productsテーブル
@@ -39,9 +37,8 @@
 ### Association
 - has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
 - has_many :product_photos
-- has_many :photos,  through:  :product_photos
 - has_many :comments
-- has_many :categories
+- belongs_to :category
 - belongs_to :user
 - belongs_to :brand
 
@@ -54,6 +51,7 @@
 |city|string|null: false|
 |other|string|null: false|
 |building_name|string|
+|user|reference|foreign_key: true, null: false|
 
 ### Association
 - belongs_to :user
@@ -65,6 +63,7 @@
 |------|----|-------|
 |customer_id|string|null: false|
 |card_id|string|null: false|
+|user|reference|foreign_key: true, null: false|
 
 ### Association
 - belongs_to :user
@@ -82,28 +81,15 @@
 - belongs_to :user
 
 
-## photosテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|image|string|null: false|
-
-### Association
-- has_many :users
-- has_many :product_photos
-- has_many :products,  through:  :product_photos
-
-
 ## product_photosテーブル
 
 |Column|Type|Options|
 |------|----|-------|
+|photo|string|null: false|
 |product|reference|foreign_key: true, null: false|
-|photo|reference|foreign_key: true, null: false|
 
 ### Association
 - belongs_to :product
-- belongs_to :photo
 
 
 ## commentsテーブル
@@ -127,7 +113,7 @@
 |ancestry|string|foreign_key: true, null: false|
 
 ### Association
-- belongs_to :product
+- has_many :products
 
 
 ## brandsテーブル
@@ -135,7 +121,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|product|reference|foreign_key: true, null: false|
 
 ### Association
 - has_many :product
