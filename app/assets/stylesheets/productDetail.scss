@@ -1,0 +1,152 @@
+body{
+  background-color: rgb(238, 236, 236);
+
+  .main-content{
+    max-width: 700px;
+    background-color:white;
+    margin:  0 auto;
+
+    h1.item-name {
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+      word-wrap: break-word;
+      line-height: 1.4;
+      font-family: 'Source Sans Pro', Helvetica,Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+
+    .main-content__photo{
+      // position: relative;
+      min-width: 280px;
+      // max-width: 360px;
+      min-height: 280px;
+      // margin: 0 auto;
+      // background-color: #161515;
+      text-align:center;
+    }
+    
+    .main-content__photoSub{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      // max-height: 280px;
+      // width: auto;
+      &--small{
+        width: 20%;    /* 横幅を割合で指定 */
+        height: auto; 
+        margin: 0 5px 0 0px;
+      }
+    }
+
+    &__price{
+      font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+      margin: 24px 0 0;
+      text-align: center;
+      font-size: 46px;
+      margin: 24px 0 24px;
+      
+
+      &--detail{
+      display: flex;
+      justify-content: center;
+
+        &-tax {
+          font-size: 10px;
+        }
+
+        &-shipFee{
+          font-size: 16px;
+        }
+      }
+    }
+
+
+    &__description{
+      margin-bottom: 30px;
+    }
+
+    &__table{
+      margin:  0 auto;
+      margin-bottom: 20px;
+
+      th,td{
+        border:solid 1px #aaaaaa;
+      }
+
+      th{
+        background-color:rgb(211, 211, 211) ;
+      }
+    }
+
+    &__btn{
+      display: flex;
+      justify-content: space-between;
+
+      &--like{
+        border: 1px solid #333;
+        border-radius: 40px;
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+      &--report{
+        border: 1px solid #333;
+        border-radius: 4px;
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+    }
+  }
+
+  .comment{
+    max-width: 700px;
+    background-color:white;
+    margin:  0 auto;
+    // padding: 24px;
+    background-color: #fff;
+    margin-top: 10px;
+    text-align: center;
+
+    &__input{
+      margin-top: 20px;
+      margin-bottom: 10px;
+      // padding: 10px 10px 10px 10px;
+      width: calc(100% - 5%);
+      min-height: 104px;
+      // padding: 10px;
+    }
+
+    &__caution{
+      padding: 8px;
+      font-size: 14px;
+      background-color: #f8f8f8;
+      margin: 10px 0;
+      text-align: left;
+    }
+
+    &__btn{
+      line-height: 48px;
+      background: #3CCACE;
+      border: 1px solid #3CCACE;
+      color: #fff;
+      width: 60%;
+      font-size: 18px;
+      border-radius: 100px;
+      margin:  0 auto;
+
+    }
+  }
+
+  .other-products{
+
+    &__links{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__genre{
+      text-align: center;
+    }
+
+  }
+}
