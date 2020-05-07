@@ -1,0 +1,114 @@
+.new_page_wrapper
+  .new_page_header
+    %a{:href => "/"}
+      %img{:src => "/assets/logo/logo.png"}
+
+  .new_page_main
+    .new_page_main__index
+      .new_page_main__photo
+        %span.label_title 
+          出品画像
+        %span.required 必須
+        %p.upload_limit 最大10枚までアップロードできます
+        %p.photo_space
+          %img{src: "/icon_camera.png"}
+          ドラッグ&ドロップまたはクリックしてファイルをダウンロード
+
+      .new_page_main__name
+        %span.label_title
+          商品名
+        %span.required 必須
+        %p
+          %input{:name => "", :placeholder => "40文字まで", :type => "text"}/
+
+      .new_page_main__explanation
+        %span.label_title
+          商品の説明
+        %span.required 必須
+        %textarea{:placeholder => "商品の説明(必須 1000文字以内)\r\n(色、素材、重さ、定価、注意点など)\r\n\r\n例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。合わせやすいのでオススメです。", :type => "text"}
+        %span.font__num 0/1000
+        %p.item__show--block 商品の詳細
+
+      .new_page_main__category
+        %span.label_title
+          カテゴリー
+        %span.required 必須
+        %p
+          %select{:name => ""}
+            %option{:value => ""} 選択して下さい
+
+      .new_page_main__brand
+        %span.label_title
+          ブランド
+        %span.any 任意
+        %p
+          %input{:name => "", :placeholder => "例)シャネル", :type => "text"}/
+      
+      .new_page_status
+        %span.label_title
+          商品の状態
+        %span.required 必須
+        %p
+          %select{:name => ""}
+            %option{:value => ""} 選択して下さい      
+        %span.item__show--block
+          配送について
+          %i.far.fa-question-circle
+
+      .new_page_bear
+        %span.label_title
+          配送料の負担
+        %span.required 必須
+        %p
+          %select{:name => ""}
+            %option{:value => ""} 選択して下さい 
+
+      .new_page_days
+        %span.label_title
+          発送までの日数
+        %span.required 必須
+        %p
+          %select{:name => ""}
+            %option{:value => ""} 選択して下さい           
+        %span.price__limit
+          価格 (¥300~9,999,999)
+          %i.far.fa-question-circle
+
+      .new_page_price
+        %span.label_title
+          販売価格
+        %span.required 必須
+        .price__table
+          %span ¥
+          %span 
+            %input{:name => "", :placeholder => "0", :type => "text"}/
+
+      .new_page_main__sales_commission
+        %span.sales_commission 販売手数料（10%）
+        %span.haihun ー
+      %hr
+      .new_page_main__profit
+        %span.profit 販売利益
+        %span.haihun ー        
+
+      %button.exhibit 出品する
+      %button.save 下書きに保存
+      .escape 
+        %a{:href => ""} もどる
+
+      .new-main-comment
+        %p
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+    
+  .new_page_footer
+    .new_page_footer__other
+      %span プライバシーポリシー
+      %span フリマアプリ規約
+      %span 特定商取引に関する表記
+
+    .new_page_footer__logo
+      %a{:href => "/"}
+        %img{:src => "/assets/logo/logo.png"}
+
+    .new_page_footer__name
+      %p &copy Furimaapuri
