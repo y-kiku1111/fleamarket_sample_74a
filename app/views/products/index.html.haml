@@ -1,31 +1,36 @@
-%body
-  %header.render.using.kuriyamasan.format
-    = icon('fas', 'dice-d6')
+%body.post-template
+
+  %header.purchase-confirm
+    =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "header-icon" 
 
   .wrapper-purchase-confirm
     %h2.title
       購入内容の確認
     
-    .product-info
+    %section.product-info
       %img.product-info__photo{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656"}/
       .product-info__name
+        新品未使用★ ロングボードセンターフィン
 
-      .product-info__price
+    %section.product-info-sub
+      .product-info-sub__price
         ¥12,000
-      .main-content__tax 
+      .main-content-sub__tax 
         (税込)
-      .main-content__shipFee 
+      .main-content-sub__shipFee 
         送料込み
 
-    .product-price
+    %section.product-price
       .product-price__title
         支払い金額
       .product-price__amount
         ¥12,000
 
-    .purchase-method
+    %section.purchase-method
       .purchase-method__titile
         支払い方法
+        =link_to "変更する", new_product_path, method: :get , class: "change"
+
       .purchase-method__how
         .purchase-method__how--name
           クレジットカード
@@ -35,23 +40,31 @@
           有効期限 07 / 22
         .purchase-method__how--logo
           = icon('fas', 'credit-card')
-        .change
-          変更する
+        
 
-    .purchase-shipping
-      .purchase-shipping__where
+    %section.purchase-shipping
+      .purchase-shipping__titile
         配送先
+        =link_to "変更する", new_product_path, method: :get , class: "change"
+
+      .purchase-shipping__where
         .purchase-shipping__where--pcode
           〒321-0634
         .purchase-shipping__where--address
           栃木県 那須烏山市 野上988-1 プラシードC 101号
         .purchase-shipping__where--name
           Robby Naish
-      .change
-        変更する
+
 
     .purchase-btn
-      = link_to product_index_path "購入する"
+      =link_to "購入する", new_product_path, method: :get , class: "purchase"
+
+  %footer.purchase-confirma
+    .purchase-confirm__rule
+      プライバシーポリシー FURIMA利用規約
+      %br
+        特定商取引に関する表記
+    =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "footer-icon" 
 
         
 
