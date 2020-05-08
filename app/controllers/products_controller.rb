@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
 
-  # みなさんの環境でRootのViewがうまく表示されるか確かめる為に仮で書いています。
-  def show
+  def index
   end
+
+  def show
+    # @products = Product.all
+  end
+
 
 end
