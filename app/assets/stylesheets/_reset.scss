@@ -1,19 +1,9 @@
 
-/*
-    TODO will need to remove settings on HTML since we can't namespace it.
-    TODO with the prefix, should I group by selector or property for weight savings?
-*/
 html{
   color:#000;
   background:#FFF;
 }
-/*
-  TODO remove settings on BODY since we can't namespace it.
-*/
-/*
-  TODO test putting a class on HEAD.
-      - Fails on FF.
-*/
+
 body,
 div,
 dl,
@@ -107,13 +97,16 @@ select {
   font-size:inherit;
   font-weight:inherit;
 
-
-  *font-size:100%; /*to enable resizing for IE*/
-
 }
+/*to enable resizing for IE*/
+input,
+textarea,
+select {
+  *font-size:100%;
+}
+ 
 /*because legend doesn't inherit in IE */
 legend {
   color:#000;
-
+#yui3-css-stamp.cssreset { display: none; }
 }
-
