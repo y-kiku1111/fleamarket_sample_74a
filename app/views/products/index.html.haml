@@ -187,4 +187,11 @@
         = image_tag '/assets/logo/download-on-app-store.png',class:'app'
       = link_to '#', class: 'Btn' do
         = image_tag '/assets/logo/btn_googleplay.png',class:'app'
+
 = render "/partial/footer"
+
+= link_to '#', class: 'auction' do
+  .auction-Btn
+    %span.auction-Btn__text
+      出品する
+    =image_tag '/assets/icon/icon_camera.png',class:'auction-Btn__icon'
