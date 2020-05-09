@@ -5,21 +5,26 @@
 
   .new_page_main
     .new_page_main__index
-      .new_page_main__photo
-        %span.label_title 
-          出品画像
-        %span.required 必須
-        %p.upload_limit 最大10枚までアップロードできます
-        %p.photo_space
-          = image_tag "/assets/icon/icon_camera.png"
-          ドラッグ&ドロップまたはクリックしてファイルをダウンロード
+      = form_with url: new_product_path, local: true do |form|
+        .new_page_main__photo
+          %span.label_title 
+            出品画像
+          %span.required 必須
+          %p.upload_limit 最大10枚までアップロードできます
+          %div.photo_space
+            ドラッグ&ドロップまたはクリックしてファイルをダウンロード
+            .file__box
+              = form.fields_for :product_photos do |m|
+                = m.label :photo, class: "form-image" do
+                  %i.fa.fa-image
+                  = m.file_field :photo
 
-      .new_page_main__name
-        %span.label_title
-          商品名
-        %span.required 必須
-        %p
-          %input{name: "", placeholder: "40文字まで", type: "text"}
+        .new_page_main__name
+          %span.label_title
+            商品名
+          %span.required 必須
+          %p
+            = form.text_field :name, placeholder: "40文字まで"
 
       .new_page_main__explanation
         %span.label_title

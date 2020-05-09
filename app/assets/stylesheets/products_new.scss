@@ -72,6 +72,7 @@ input {
           font-size: 13px;
         }
         .photo_space{
+          position: relative;
           background-color: rgb(245, 245, 245);
           text-align: center;
           height: 150px;
@@ -79,10 +80,22 @@ input {
           margin-bottom: 30px;
           font-size: 14px;
           color: #aaaaaa;
-          img {
-            width: 12px;
-            height: 12px;
-            background-color: #aaaaaa;
+          .file__box {
+            position: absolute;
+            top: 47px;
+            left: 83px;
+            .form-image {
+              
+              i {
+                position: absolute;
+                left: 20px;
+                top: 20px;
+                padding-right: 400px;
+              }
+              input {
+                display: none;
+              }
+            }
           }
         }
 

@@ -6,4 +6,6 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :user
   belongs_to :brand
+
+  accepts_nested_attributes_for :product_photos
 end
