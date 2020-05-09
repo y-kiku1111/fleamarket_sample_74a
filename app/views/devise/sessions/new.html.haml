@@ -1,0 +1,36 @@
+
+.sign-in-wrapper
+  %header.sign-in__header
+    = link_to '#' do
+      = image_tag "/assets/logo/logo.png"
+  %main.sign-in-content
+    .sign-in-content__head
+      .sign-in-content__head__text アカウントをお持ちでない方はこちら
+      .sign-in-content__head__actions
+        = link_to '新規会員登録' ,'/users/sign_up'
+
+  %section.sign-in-content__main
+  .sign-in-content__main__form
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .sign-in-content__main__form__group
+        = f.email_field :email, autofocus: true, autocomplete: "email",placeholder:" メールアドレス", class:"sign-in-content__main__form__group__mail"
+      .sign-in-content__main__form__group
+        %br/
+        = f.password_field :password, autocomplete: "current-password",placeholder:" パスワード", class:"sign-in-content__main__form__group__pass"
+
+      .sign-in-content__main__form__actions
+        = f.submit "ログイン",class:"sign-in-content__main__form__actions__button"
+
+      .sign-in-content__main__form__forget
+        = link_to 'パスワードをお忘れの方' ,'/users/sign_up'
+
+  %footer.sign-in-content__footer
+    .sign-in-content__footer__other
+      %span プライバシーポリシー
+      %span フリマアプリ規約
+      %span 特定商取引に関する表記
+    .sign-in-content__footer__logo
+      = link_to '#' do
+        = image_tag "/assets/logo/logo.png"
+    .sign-in-content__footer__name
+      %p &copy Furimaapuri
