@@ -195,3 +195,12 @@
     %span.auction-Btn__text
       出品する
     =image_tag '/assets/icon/icon_camera.png',class:'auction-Btn__icon'
+
+  %footer.purchase-confirma
+    .purchase-confirm__rule
+      プライバシーポリシー FURIMA利用規約
+      %br
+        特定商取引に関する表記
+    =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "footer-icon" 
+
+    =link_to image_tag(src="icon/icon-01.png", height: "50", width: "auto"), "/products/:id(.:format)", class: "footer-icon" 

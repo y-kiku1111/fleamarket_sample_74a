@@ -1,5 +1,5 @@
 %body
-  %header.render.using.kuriyamasan.format
+  = render "/partial/header"
 
   .wrapper-product-dtail
 
@@ -30,21 +30,16 @@
           %tr
             %th 出品者
             %td
-              %a{:href => "https://www.mercari.com/"} hoge
+              = link_to "hoge", "/products/1/messages(.:format)" , method: :post , class: ""
               %div
           %tr
             %th カテゴリー
             %td
-              %a{:href => "https://www.mercari.com/"}
-                %div スポーツ・レジャー
-              %a{:href => "https://www.mercari.com/"}
-                .item-detail-table-sub-category
-                  %i.icon-arrow-right
-                  その他スポーツ
-              %a{:href => "https://www.mercari.com/"}
-                .item-detail-table-sub-sub-category
-                  %i.icon-arrow-right
-                  その他
+              = link_to "スポーツ・レジャー", "/products/1/messages(.:format)" , method: :post , class: ""
+              %br
+                = link_to "その他スポーツ", "/products/1/messages(.:format)" , method: :post , class: ""
+                %br
+                  = link_to "その他", "/products/1/messages(.:format)" , method: :post , class: ""
           %tr
             %th ブランド
             %td
@@ -98,3 +93,6 @@
       .other-products__genre
         メンズ
         = link_to "もっと見る", "/products/1/messages(.:format)" , method: :post , class: ""
+
+  = render "/partial/footer"
+
