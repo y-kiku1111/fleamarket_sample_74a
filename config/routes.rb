@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   root to: "products#index"
   resources :users, only: :show
-  resources :products, only: [:new]
+  resources :products
   resources :users
+  # resources :comments
 
+  resources :products do
+    resources :comments, only: [:index, :create]
+  end
 
 end

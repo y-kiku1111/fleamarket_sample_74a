@@ -4,7 +4,14 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # @products = Product.all
+    # @product = Product.new
+    # binding.pry
+    # @product = Product.all
+    # id = 1
+    # @product = Product.find(params[:id])
+    @product = Product.find(1)
+    # binding.pry
+
   end
 
   def new

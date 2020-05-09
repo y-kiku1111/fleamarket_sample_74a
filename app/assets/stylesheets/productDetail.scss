@@ -131,8 +131,10 @@ body{
         margin-bottom: 10px;
         width: calc(100%);
         min-height: 104px;
-        border-color: rgb(170, 169, 169);
-        border-width: 0.5px;
+        border: solid;
+        border-width: thin;
+        border-color: rgb(141, 141, 141);
+     
       }
 
       &__caution{
@@ -146,17 +148,30 @@ body{
 
       &__btn{
         height: 53px;
-        line-height: 56px;
-        background: #3CCACE;
-        border: 1px solid #3CCACE;
-        color: #fff;
-        width: 60%;
-        font-size: 18px;
-        border-radius: 100px;
+        line-height: 50px;
         margin:  0 auto;
         text-align:center;
         margin-top: 30px;
+        width: 60%;
+        position: relative;
 
+        &--link{
+          background: #3CCACE;
+          border: 1px solid #3CCACE;
+          color: #fff;
+          width: 100%;
+          font-size: 18px;
+          border-radius: 100px;
+          display: block;
+          text-decoration: none;
+        }
+
+        .fa-comment{
+          color:white;
+          position: absolute;
+          top: 32%;
+          left: 30%;
+        }
       }
     }
 
