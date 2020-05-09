@@ -63,16 +63,14 @@
             配送料の負担
           %span.required 必須
           %p
-            %select{name: ""}
-              %option{value: ""} 選択して下さい 
+            = form.select :bear, Product.bears.keys
 
         .new_page_days
           %span.label_title
             発送までの日数
           %span.required 必須
           %p
-            %select{name: ""}
-              %option{value: ""} 選択して下さい           
+            = form.select :days, Product.days.keys         
           %span.price__limit
             価格 (¥300~9,999,999)
             %i.far.fa-question-circle
