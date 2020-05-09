@@ -1,0 +1,10 @@
+ja:
+  enumas:
+    product:
+      status:
+        new_product: 新品・未使用
+        close_to_unused: 未使用に近い
+        nice_product: 目立った傷や汚れ無し
+        a_little_dirty: やや傷や汚れあり
+        dirty: 傷や汚れあり
+        bad: 傷や汚れあり
