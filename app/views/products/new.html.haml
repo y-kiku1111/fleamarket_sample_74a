@@ -5,7 +5,7 @@
 
   .new_page_main
     .new_page_main__index
-      = form_with(url: new_product_path, local: true) do |form|
+      = form_with(url: products_path, local: true) do |form|
         .new_page_main__photo
           %span.label_title 
             出品画像
@@ -46,7 +46,7 @@
             ブランド
           %span.any 任意
           %p
-            %input{name: "", placeholder: "例)シャネル", type: "text"}/
+            = form.text_field :brand, placeholder: "例)シャネル"
       
         .new_page_status
           %span.label_title
@@ -82,15 +82,15 @@
           .price__table
             %span ¥
             %span 
-              = form.text_field :price, placeholder: "0"
+              = form.text_field :price, placeholder: "0", id: "price-result"
 
         .new_page_main__sales_commission
           %span.sales_commission 販売手数料（10%）
-          %span.haihun ー
+          %span.haihun_tax -
         %hr
         .new_page_main__profit
           %span.profit 販売利益
-          %span.haihun ー        
+          %span.haihun_profit -      
 
         %but.exhibit
           = form.submit '出品する', class:"submit-exhibit"
@@ -115,3 +115,4 @@
 
     .new_page_footer__name
       %p &copy FurimaApuri
+

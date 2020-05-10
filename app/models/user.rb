@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :cards
   has_one :address
 
-  mount_uploader :img_name, ImgNameUploader
+  mount_uploader :profile_photo, ImgNameUploader
 end

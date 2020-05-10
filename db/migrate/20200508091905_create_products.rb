@@ -7,8 +7,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :status, null: false
       t.integer :bear, null: false
       t.integer :days, null: false
-      t.references :user, foreign_key: true
-      t.references :category, foreign_key: true
+      t.integer :user_id, foreign_key: true, null:false
+      t.integer :category_id, foreign_key: true, null:false
       t.timestamps
     end
   end
