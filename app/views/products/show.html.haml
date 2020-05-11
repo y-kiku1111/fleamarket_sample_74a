@@ -1,5 +1,5 @@
 %body
-  %header.render.using.kuriyamasan.format
+  = render "/partial/header"
 
   .wrapper-product-dtail
 
@@ -13,7 +13,9 @@
         %img.main-content__photoSub--small{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_2.jpg?1588653656"}/
 
       .main-content__price
-        ¥12,000
+        %p.lower-message__content
+          = @product.price
+          円
         %span.main-content__price--detail
           .main-content__price--detail-tax 
             (税込)
@@ -21,28 +23,23 @@
             送料込み
 
       .main-content__description
-        親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
-      
+        = @product.explanation
+
       %table.main-content__table{border: "1" ,style: "border-collapse: collapse"}
         %tbody
           %tr
             %th 出品者
             %td
-              %a{:href => "https://www.mercari.com/"} hoge
+              = link_to "hoge", user_path , method: :post , class: ""
               %div
           %tr
             %th カテゴリー
             %td
-              %a{:href => "https://www.mercari.com/"}
-                %div スポーツ・レジャー
-              %a{:href => "https://www.mercari.com/"}
-                .item-detail-table-sub-category
-                  %i.icon-arrow-right
-                  その他スポーツ
-              %a{:href => "https://www.mercari.com/"}
-                .item-detail-table-sub-sub-category
-                  %i.icon-arrow-right
-                  その他
+              = link_to "スポーツ・レジャー", user_path , method: :post , class: ""
+              %br
+                = link_to "その他スポーツ",user_path , method: :post , class: ""
+                %br
+                  = link_to "その他",user_path , method: :post , class: ""
           %tr
             %th ブランド
             %td
@@ -60,10 +57,11 @@
             %td 青森県
           %tr
             %th 発送日の目安
-            %td 	1-2日で発送
+            %td 
+              = @product.days
+              日で発送
 
       .main-content__btn
-
         .main-content__btn--like
           = icon('fas', 'star')
           お気に入り 0
@@ -72,25 +70,29 @@
           不適切な商品の通報
 
     .comment
-      %input.comment__input{id: "", name: "", type: "text", value: "", :placeholder =>""}
+      %input.comment__input{id: "comment__input", name: "", type: "text", value: "", :placeholder: ""}
       .comment__caution
         相手のことを考え丁寧なコメントを心がけましょう。
         %br
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      
+
       .comment__btn
+        = link_to "コメントする", "/products/:product_id/comments" , method: :POST , class: "comment__btn--link",id: "comment__btn--link"
         = icon('fas', 'comment')
-        コメントする
 
     .other-products
       .other-products__links
-        %a.other-products__links-privious{:href => "https://www.mercari.com/"}
+        .other-products__links--privious
           = icon('fas', 'chevron-left')
-          前の商品
-        %a.other-products__links-next{:href => "https://www.mercari.com/"}
-          次の商品
+          = link_to "前の商品", "/" , method: :post , class: ""
+
+        .other-products__links--next
+          = link_to "次の商品", "/" , method: :post , class: ""
           = icon('fas', 'chevron-right')
 
       .other-products__genre
-        %a.other-products__links-privious{:href => "https://www.mercari.com/"}
-          メンズもっと見る
+        メンズ
+        = link_to "もっと見る", "/" , method: :post , class: ""
+
+  = render "/partial/footer"
+
