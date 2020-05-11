@@ -11,187 +11,187 @@
         フリマアプリです
       .main__content-btn
         = link_to '#',class:'Btn' do
-          = image_tag asset_path('logo/download-on-app-store.png'),class:"app"
-          = image_tag asset_path("logo/btn_googleplay.png") ,class:"app"
+          = image_tag '/images/logo/download-on-app-store.png',class:"app"
+          = image_tag"/images/logo/btn_googleplay.png" ,class:"app"
        
-  %section.main__introduction
-    %h2.subtitle
-      FURIMAが選ばれる3つの理由
-    %ul.lists
-      %li.list
-        .list__pict
-          %span.number 1
-          = image_tag asset_path("pict/pict-reason-01.jpg"),class:'intro-size'
-        %h3.list__text
-          %span.def-color 3分
-          ですぐ出品
-        %p.list__description
-          スマホで入力するだけで簡単に出品できる！
-      %li.list
-        .list__pict
-          %span.number 2
-          = image_tag asset_path("pict/pict-reason-02.jpg"),class:'intro-size'
-        %h3.list__text
-          %span.def-color シンプル
-          で使いやすい
-        %p.list__description
-          めんどくさい入力は必要なく、検索も購入もスムーズ！！
-      %li.list
-        .list__pict
-          %span.number 3
-          = image_tag asset_path("pict/pict-reason-03.jpg"),class:'intro-size'
-        %h3.list__text
-          手数料
-          %span.def-color 業界最安
-        %p.list__description
-          最大3%でお得に出品&amp;購入！
-  %section.main__appdl
-    .inner
-      %h2.inner__subtitle 会員数日本一位
-      %p.inner__text
-        FURIMAは、フリマアプリで最も人気。
-        %br/
-        出品・購入回数も業界最多です！
-        %br/
-        ほしかったあの商品に出会えるかもしれません。
-      .inner__btn
-        = link_to '#', class:'Btn' do
-          = image_tag asset_path("logo/download-on-app-store.png"),class:"app"
-        = link_to '#', class:'Btn' do
-          = image_tag asset_path("logo/btn_googleplay.png"),class:"app"
-  %section.main__features
-    %h2.head
-      FURIMAの特徴
-    .items
-      %section.item
-        %figure.item__img
-          = image_tag asset_path("icon/icon-01"),class:'feature-size'
-        %h3.item__subtitle
-          簡単に売り買い
-          %br>/
-          出来る
-        %p.item__detail スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
-      %section.item
-        %figure.item__img
-          = image_tag asset_path("icon/icon-03"),class:'feature-size'
-        %h3.item__subtitle 売上金は即日振込みに対応
-        %p.item__detail 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
-      %section.item
-        %figure.item__img
-          = image_tag asset_path("icon/icon-04"),class:'feature-size'
-        %h3.item__subtitle
-          様々な支払いに
-          %br>/
-          対応
-        %p.item__detail お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
-  %section.main__pickup
-    %h2.head ピックアップカテゴリー
-    .product-box
-      .product-box__head
-        = link_to '#', class:'new-product' do
-          %h3.title 新規投稿商品
-      .product-box__lists
-        .product-box__list
-          = link_to '#', class:'new-product' do
-            %figure.product-box__img
-              = image_tag asset_path("products/sample1.jpeg"), class:'pickup-size'
-            .product-box__body
-              %h3.name 餃子
-              .detail
-                %ul.price-line
-                  %li.price 500円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.tax （税込）
-        .product-box__list
-          = link_to '#', class:'new-product' do
-            %figure.product-box__img
-              = image_tag asset_path("products/sample2.jpeg"), class:'pickup-size'
-            .product-box__body
-              %h3.name 餃子
-              .detail
-                %ul.price-line
-                  %li.price 500円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.tax （税込）
+-#   %section.main__introduction
+-#     %h2.subtitle
+-#       FURIMAが選ばれる3つの理由
+-#     %ul.lists
+-#       %li.list
+-#         .list__pict
+-#           %span.number 1
+-#           = image_tag asset_path("pict/pict-reason-01.jpg"),class:'intro-size'
+-#         %h3.list__text
+-#           %span.def-color 3分
+-#           ですぐ出品
+-#         %p.list__description
+-#           スマホで入力するだけで簡単に出品できる！
+-#       %li.list
+-#         .list__pict
+-#           %span.number 2
+-#           = image_tag asset_path("pict/pict-reason-02.jpg"),class:'intro-size'
+-#         %h3.list__text
+-#           %span.def-color シンプル
+-#           で使いやすい
+-#         %p.list__description
+-#           めんどくさい入力は必要なく、検索も購入もスムーズ！！
+-#       %li.list
+-#         .list__pict
+-#           %span.number 3
+-#           = image_tag asset_path("pict/pict-reason-03.jpg"),class:'intro-size'
+-#         %h3.list__text
+-#           手数料
+-#           %span.def-color 業界最安
+-#         %p.list__description
+-#           最大3%でお得に出品&amp;購入！
+-#   %section.main__appdl
+-#     .inner
+-#       %h2.inner__subtitle 会員数日本一位
+-#       %p.inner__text
+-#         FURIMAは、フリマアプリで最も人気。
+-#         %br/
+-#         出品・購入回数も業界最多です！
+-#         %br/
+-#         ほしかったあの商品に出会えるかもしれません。
+-#       .inner__btn
+-#         = link_to '#', class:'Btn' do
+-#           = image_tag asset_path("logo/download-on-app-store.png"),class:"app"
+-#         = link_to '#', class:'Btn' do
+-#           = image_tag asset_path("logo/btn_googleplay.png"),class:"app"
+-#   %section.main__features
+-#     %h2.head
+-#       FURIMAの特徴
+-#     .items
+-#       %section.item
+-#         %figure.item__img
+-#           = image_tag asset_path("icon/icon-01"),class:'feature-size'
+-#         %h3.item__subtitle
+-#           簡単に売り買い
+-#           %br>/
+-#           出来る
+-#         %p.item__detail スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+-#       %section.item
+-#         %figure.item__img
+-#           = image_tag asset_path("icon/icon-03"),class:'feature-size'
+-#         %h3.item__subtitle 売上金は即日振込みに対応
+-#         %p.item__detail 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+-#       %section.item
+-#         %figure.item__img
+-#           = image_tag asset_path("icon/icon-04"),class:'feature-size'
+-#         %h3.item__subtitle
+-#           様々な支払いに
+-#           %br>/
+-#           対応
+-#         %p.item__detail お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+-#   %section.main__pickup
+-#     %h2.head ピックアップカテゴリー
+-#     .product-box
+-#       .product-box__head
+-#         = link_to '#', class:'new-product' do
+-#           %h3.title 新規投稿商品
+-#       .product-box__lists
+-#         .product-box__list
+-#           = link_to '#', class:'new-product' do
+-#             %figure.product-box__img
+-#               = image_tag asset_path("products/sample1.jpeg"), class:'pickup-size'
+-#             .product-box__body
+-#               %h3.name 餃子
+-#               .detail
+-#                 %ul.price-line
+-#                   %li.price 500円
+-#                   %li
+-#                     %i.fa.fa-star.likeIcon
+-#                     0
+-#                 %p.tax （税込）
+-#         .product-box__list
+-#           = link_to '#', class:'new-product' do
+-#             %figure.product-box__img
+-#               = image_tag asset_path("products/sample2.jpeg"), class:'pickup-size'
+-#             .product-box__body
+-#               %h3.name 餃子
+-#               .detail
+-#                 %ul.price-line
+-#                   %li.price 500円
+-#                   %li
+-#                     %i.fa.fa-star.likeIcon
+-#                     0
+-#                 %p.tax （税込）
         
-        .product-box__list
-          = link_to '#', class:'new-product' do
-            %figure.product-box__img
-              = image_tag asset_path("products/sample5.jpeg"), class:'pickup-size'
-            .product-box__body
-              %h3.name 餃子
-              .detail
-                %ul.price-line
-                  %li.price 500円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.tax （税込）
-  %section.main__pickup
-    %h2.head ピックアップブランド
-    .product-box
-      .product-box__head
-        = link_to'#', class:'new-product' do
-          %h3.title アーカイバ
-      .product-box__lists
-        .product-box__list
-          = link_to '#', class:'new-product' do
-            %figure.product-box__img
-              = image_tag asset_path("products/sample1.jpeg"), class:'pickup-size'
-            .product-box__body
-              %h3.name 餃子
-              .detail
-                %ul.price-line
-                  %li.price 500円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.tax （税込）
-        .product-box__list
-          = link_to '#', class:'new-product' do
-            %figure.product-box__img
-              = image_tag asset_path("products/sample2.jpeg"), class:'pickup-size'
-            .product-box__body
-              %h3.name 餃子
-              .detail
-                %ul.price-line
-                  %li.price 500円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                    0
-                %p.tax （税込）
-        .product-box__list
-          = link_to '#', class:'new-product' do
-            %figure.product-box__img
-              = image_tag asset_path("products/sample6.jpeg"), class:'pickup-size'
-            .product-box__body
-              %h3.name 餃子
-              .detail
-                %ul.price-line
-                  %li.price 500円
-                  %li
-                    %i.fas.fa-star.likeIcon
-                    0
-                %p.tax （税込）
-%aside.appBanner
-  .inner
-    %h2.inner__title
-      だれでもかんたん、人生を変えるフリマアプリ
-    %p.inner__text 今すぐ無料ダウンロード
-    .inner__icon
-      = link_to '#', class: 'Btn' do
-        = image_tag asset_path("logo/download-on-app-store.png"),class:'app'
-      = link_to '#', class: 'Btn' do
-        = image_tag asset_path("logo/btn_googleplay.png"),class:'app'
+-#         .product-box__list
+-#           = link_to '#', class:'new-product' do
+-#             %figure.product-box__img
+-#               = image_tag asset_path("products/sample5.jpeg"), class:'pickup-size'
+-#             .product-box__body
+-#               %h3.name 餃子
+-#               .detail
+-#                 %ul.price-line
+-#                   %li.price 500円
+-#                   %li
+-#                     %i.fa.fa-star.likeIcon
+-#                     0
+-#                 %p.tax （税込）
+-#   %section.main__pickup
+-#     %h2.head ピックアップブランド
+-#     .product-box
+-#       .product-box__head
+-#         = link_to'#', class:'new-product' do
+-#           %h3.title アーカイバ
+-#       .product-box__lists
+-#         .product-box__list
+-#           = link_to '#', class:'new-product' do
+-#             %figure.product-box__img
+-#               = image_tag asset_path("products/sample1.jpeg"), class:'pickup-size'
+-#             .product-box__body
+-#               %h3.name 餃子
+-#               .detail
+-#                 %ul.price-line
+-#                   %li.price 500円
+-#                   %li
+-#                     %i.fa.fa-star.likeIcon
+-#                     0
+-#                 %p.tax （税込）
+-#         .product-box__list
+-#           = link_to '#', class:'new-product' do
+-#             %figure.product-box__img
+-#               = image_tag asset_path("products/sample2.jpeg"), class:'pickup-size'
+-#             .product-box__body
+-#               %h3.name 餃子
+-#               .detail
+-#                 %ul.price-line
+-#                   %li.price 500円
+-#                   %li
+-#                     %i.fa.fa-star.likeIcon
+-#                     0
+-#                 %p.tax （税込）
+-#         .product-box__list
+-#           = link_to '#', class:'new-product' do
+-#             %figure.product-box__img
+-#               = image_tag asset_path("products/sample6.jpeg"), class:'pickup-size'
+-#             .product-box__body
+-#               %h3.name 餃子
+-#               .detail
+-#                 %ul.price-line
+-#                   %li.price 500円
+-#                   %li
+-#                     %i.fas.fa-star.likeIcon
+-#                     0
+-#                 %p.tax （税込）
+-# %aside.appBanner
+-#   .inner
+-#     %h2.inner__title
+-#       だれでもかんたん、人生を変えるフリマアプリ
+-#     %p.inner__text 今すぐ無料ダウンロード
+-#     .inner__icon
+-#       = link_to '#', class: 'Btn' do
+-#         = image_tag asset_path("logo/download-on-app-store.png"),class:'app'
+-#       = link_to '#', class: 'Btn' do
+-#         = image_tag asset_path("logo/btn_googleplay.png"),class:'app'
 
-= render "/partial/footer"
+-# = render "/partial/footer"
 
-= link_to '#', class: 'auction' do
-  .auction-Btn
-    %span.auction-Btn__text
-      出品する
-    =image_tag asset_path("icon/icon_camera.png"),class:'auction-Btn__icon'
+-# = link_to '#', class: 'auction' do
+-#   .auction-Btn
+-#     %span.auction-Btn__text
+-#       出品する
+-#     =image_tag asset_path("icon/icon_camera.png"),class:'auction-Btn__icon'
