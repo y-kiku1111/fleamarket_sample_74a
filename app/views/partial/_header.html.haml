@@ -1,0 +1,25 @@
+%header.Header
+  .Header__inner
+    .Header__top
+      .Header__icon
+        = link_to '/' do
+          = image_tag "/images/logo/logo.png",class:"Header__logo"
+      .Header__search-Box
+        %form.Header__form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
+          %input{:name => "utf-8", :type => "hidden", :value => ""}/
+          %input#searchInput.Header__input{:name => "key", :placeholder => "キーワードから探す"}/
+          %button.Header__button{:type => "submit"}
+            %div
+              = image_tag "/images/icon/icon-search 1.png",class:"Header__search-Box__icon"
+      %ul.Header__resultLists
+    %nav.Header__nav
+      %ul.Header__left-nav
+        %li.Header__left-list
+          = link_to 'カテゴリー','#',class:'Header__navBtn'
+        %li.Header__left-list
+          = link_to 'ブランド','#',class:'Header__navBtn'
+      %ul.Header__right-nav
+        %li.Header__right-list
+          = link_to 'ログイン','users/sign_in',class:'Header__navBtn'
+        %li.Header__right-list
+          = link_to '新規会員登録','users/sign_up',class:'Header__navBtn'
