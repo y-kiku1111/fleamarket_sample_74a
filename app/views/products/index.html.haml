@@ -11,8 +11,8 @@
         フリマアプリです
       .main__content-btn
         = link_to '#',class:'Btn' do
-          = image_tag asset_logo_path('download-on-app-store.png'),class:"app"
-          = image_tag "/images/logo/btn_googleplay.png" ,class:"app"
+          = image_tag asset_path('logo/download-on-app-store.png'),class:"app"
+          = image_tag asset_path("logo/btn_googleplay.png") ,class:"app"
           -# = image_tag "/assets/logo/download-on-app-store.png",class:"app"
           -# = image_tag "/assets/logo/btn_googleplay.png",class:"app"
        
@@ -23,7 +23,7 @@
       %li.list
         .list__pict
           %span.number 1
-          = image_tag '/images/pict/pict-reason-01.jpg',class:'intro-size'
+          = image_tag asset_path("pict/pict-reason-01.jpg"),class:'intro-size'
         %h3.list__text
           %span.def-color 3分
           ですぐ出品
@@ -32,7 +32,7 @@
       %li.list
         .list__pict
           %span.number 2
-          = image_tag '/assets/pict/pict-reason-02.jpg',class:'intro-size'
+          = image_tag asset_path("pict/pict-reason-02.jpg"),class:'intro-size'
         %h3.list__text
           %span.def-color シンプル
           で使いやすい
@@ -41,7 +41,7 @@
       %li.list
         .list__pict
           %span.number 3
-          = image_tag '/assets/pict/pict-reason-03.jpg',class:'intro-size'
+          = image_tag asset_path("pict/pict-reason-03.jpg"),class:'intro-size'
         %h3.list__text
           手数料
           %span.def-color 業界最安
@@ -58,16 +58,16 @@
         ほしかったあの商品に出会えるかもしれません。
       .inner__btn
         = link_to '#', class:'Btn' do
-          = image_tag "/assets/logo/download-on-app-store.png",class:"app"
+          = image_tag asset_path("logo/download-on-app-store.png"),class:"app"
         = link_to '#', class:'Btn' do
-          = image_tag "/assets/logo/btn_googleplay.png",class:"app"
+          = image_tag asset_path("logo/btn_googleplay.png"),class:"app"
   %section.main__features
     %h2.head
       FURIMAの特徴
     .items
       %section.item
         %figure.item__img
-          = image_tag '/assets/icon/icon-01',class:'feature-size'
+          = image_tag asset_path("icon/icon-01"),class:'feature-size'
         %h3.item__subtitle
           簡単に売り買い
           %br>/
@@ -75,12 +75,12 @@
         %p.item__detail スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       %section.item
         %figure.item__img
-          = image_tag '/assets/icon/icon-03',class:'feature-size'
+          = image_tag asset_path("icon/icon-03"),class:'feature-size'
         %h3.item__subtitle 売上金は即日振込みに対応
         %p.item__detail 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       %section.item
         %figure.item__img
-          = image_tag '/assets/icon/icon-04',class:'feature-size'
+          = image_tag asset_path("icon/icon-04"),class:'feature-size'
         %h3.item__subtitle
           様々な支払いに
           %br>/
@@ -96,7 +96,7 @@
         .product-box__list
           = link_to '#', class:'new-product' do
             %figure.product-box__img
-              = image_tag '/assets/products/sample1.jpeg', class:'pickup-size'
+              = image_tag asset_path("products/sample1.jpeg"), class:'pickup-size'
             .product-box__body
               %h3.name 餃子
               .detail
@@ -109,7 +109,7 @@
         .product-box__list
           = link_to '#', class:'new-product' do
             %figure.product-box__img
-              = image_tag '/assets/products/sample2.jpeg', class:'pickup-size'
+              = image_tag asset_path("products/sample2.jpeg"), class:'pickup-size'
             .product-box__body
               %h3.name 餃子
               .detail
@@ -123,7 +123,7 @@
         .product-box__list
           = link_to '#', class:'new-product' do
             %figure.product-box__img
-              = image_tag '/assets/products/sample5.jpeg', class:'pickup-size'
+              = image_tag asset_path("products/sample5.jpeg"), class:'pickup-size'
             .product-box__body
               %h3.name 餃子
               .detail
@@ -143,7 +143,7 @@
         .product-box__list
           = link_to '#', class:'new-product' do
             %figure.product-box__img
-              = image_tag '/assets/products/sample1.jpeg', class:'pickup-size'
+              = image_tag asset_path("products/sample1.jpeg"), class:'pickup-size'
             .product-box__body
               %h3.name 餃子
               .detail
@@ -156,7 +156,7 @@
         .product-box__list
           = link_to '#', class:'new-product' do
             %figure.product-box__img
-              = image_tag '/assets/products/sample2.jpeg', class:'pickup-size'
+              = image_tag asset_path("products/sample2.jpeg"), class:'pickup-size'
             .product-box__body
               %h3.name 餃子
               .detail
@@ -169,7 +169,7 @@
         .product-box__list
           = link_to '#', class:'new-product' do
             %figure.product-box__img
-              = image_tag '/assets/products/sample6.jpeg', class:'pickup-size'
+              = image_tag asset_path("products/sample6.jpeg"), class:'pickup-size'
             .product-box__body
               %h3.name 餃子
               .detail
@@ -186,9 +186,9 @@
     %p.inner__text 今すぐ無料ダウンロード
     .inner__icon
       = link_to '#', class: 'Btn' do
-        = image_tag '/assets/logo/download-on-app-store.png',class:'app'
+        = image_tag asset_path("logo/download-on-app-store.png"),class:'app'
       = link_to '#', class: 'Btn' do
-        = image_tag '/assets/logo/btn_googleplay.png',class:'app'
+        = image_tag asset_path("logo/btn_googleplay.png"),class:'app'
 
 = render "/partial/footer"
 
@@ -196,4 +196,4 @@
   .auction-Btn
     %span.auction-Btn__text
       出品する
-    =image_tag '/assets/icon/icon_camera.png',class:'auction-Btn__icon'
+    =image_tag asset_path("icon/icon_camera.png"),class:'auction-Btn__icon'

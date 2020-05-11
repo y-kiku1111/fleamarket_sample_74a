@@ -30,16 +30,16 @@
           %tr
             %th 出品者
             %td
-              = link_to "hoge", "/products/1/messages(.:format)" , method: :post , class: ""
+              = link_to "hoge", user_path , method: :post , class: ""
               %div
           %tr
             %th カテゴリー
             %td
-              = link_to "スポーツ・レジャー", "/products/1/messages(.:format)" , method: :post , class: ""
+              = link_to "スポーツ・レジャー", user_path , method: :post , class: ""
               %br
-                = link_to "その他スポーツ", "/products/1/messages(.:format)" , method: :post , class: ""
+                = link_to "その他スポーツ",user_path , method: :post , class: ""
                 %br
-                  = link_to "その他", "/products/1/messages(.:format)" , method: :post , class: ""
+                  = link_to "その他",user_path , method: :post , class: ""
           %tr
             %th ブランド
             %td
@@ -70,7 +70,7 @@
           不適切な商品の通報
 
     .comment
-      %input.comment__input{id: "comment__input", name: "", type: "text", value: "", :placeholder =>""}
+      %input.comment__input{id: "comment__input", name: "", type: "text", value: "", :placeholder: ""}
       .comment__caution
         相手のことを考え丁寧なコメントを心がけましょう。
         %br
@@ -84,15 +84,15 @@
       .other-products__links
         .other-products__links--privious
           = icon('fas', 'chevron-left')
-          = link_to "前の商品", "/products/1/messages(.:format)" , method: :post , class: ""
+          = link_to "前の商品", "/" , method: :post , class: ""
 
         .other-products__links--next
-          = link_to "次の商品", "/products/1/messages(.:format)" , method: :post , class: ""
+          = link_to "次の商品", "/" , method: :post , class: ""
           = icon('fas', 'chevron-right')
 
       .other-products__genre
         メンズ
-        = link_to "もっと見る", "/products/1/messages(.:format)" , method: :post , class: ""
+        = link_to "もっと見る", "/" , method: :post , class: ""
 
   = render "/partial/footer"
 

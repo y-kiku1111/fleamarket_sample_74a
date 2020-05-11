@@ -3,14 +3,14 @@
     .Header__top
       .Header__icon
         = link_to '/' do
-          = image_tag "/assets/logo/logo.png",class:"Header__logo"
+          = image_tag asset_path("logo/logo.png"),class:"Header__logo"
       .Header__search-Box
         %form.Header__form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
           %input{:name => "utf-8", :type => "hidden", :value => ""}/
           %input#searchInput.Header__input{:name => "key", :placeholder => "キーワードから探す"}/
           %button.Header__button{:type => "submit"}
             %div
-              = image_tag "/assets/icon/icon-search 1.png",class:"Header__search-Box__icon"
+              = image_tag asset_path("icon/icon-search 1.png"),class:"Header__search-Box__icon"
       %ul.Header__resultLists
     %nav.Header__nav
       %ul.Header__left-nav
