@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "products#index"
-  resources :users, only: :show
+
+  resources :users, only: [:show, :destroy]
+  resources :cards, only: :new
   resources :products
   resources :users
   # resources :comments
@@ -9,5 +11,6 @@ Rails.application.routes.draw do
   resources :products do
     resources :comments, only: [:index, :create]
   end
+
 
 end
