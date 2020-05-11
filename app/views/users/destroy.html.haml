@@ -1,0 +1,12 @@
+.mypage
+  %main.mypage-contents.clearfix
+    = render "mypage_side"
+
+  
+    .mypage-content
+      .mypage-content__chapter-container
+        .signup-main__inner
+          .signup-main__content
+            = link_to destroy_user_session_path, method: 'delete', class: 'signup-main__btn-default' do
+              ログアウト
+              
