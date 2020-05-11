@@ -1,0 +1,97 @@
+%body
+  = render "/partial/header"
+
+  .wrapper-product-dtail
+    .main-content
+      %h1.item-name underground WT142 pro carbon カイトサーフィン
+      .main-content__photo
+        %img.item-main-content__photo--big{:alt => "underground WT142 pro carbon カイトサーフィン", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656", :src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656", :style => "opacity: 1;"}/
+      
+      .main-content__photoSub
+        %img.main-content__photoSub--small{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656"}/
+        %img.main-content__photoSub--small{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_2.jpg?1588653656"}/
+
+      .main-content__price
+        %p.lower-message__content
+          = @product.price
+          円
+        %span.main-content__price--detail
+          .main-content__price--detail-tax 
+            (税込)
+          .main-content__price--detail-shipFee 
+            送料込み
+
+      .main-content__description
+        = @product.explanation
+
+      %table.main-content__table{border: "1" ,style: "border-collapse: collapse"}
+        %tbody
+          %tr
+            %th 出品者
+            %td
+              = link_to "hoge", user_path , method: :post , class: ""
+              %div
+          %tr
+            %th カテゴリー
+            %td
+              = link_to "スポーツ・レジャー", user_path , method: :post , class: ""
+              %br
+                = link_to "その他スポーツ",user_path , method: :post , class: ""
+                %br
+                  = link_to "その他",user_path , method: :post , class: ""
+          %tr
+            %th ブランド
+            %td
+          %tr
+            %th 商品の状態
+            %td 新品/未使用
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td 着払い（購入者負担）
+          %tr
+            %th 配送元地域
+            %td 青森県
+          %tr
+            %th 発送日の目安
+            %td 
+              = @product.days
+              日で発送
+
+      .main-content__btn
+        .main-content__btn--like
+          = icon('fas', 'star')
+          お気に入り 0
+        .main-content__btn--report
+          = icon('fab', 'font-awesome-flag')
+          不適切な商品の通報
+
+    .comment
+      %input.comment__input{id: "comment__input", name: "", type: "text", value: "", placeholder: ""}
+      .comment__caution
+        相手のことを考え丁寧なコメントを心がけましょう。
+        %br
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+
+      .comment__btn
+        = link_to "コメントする", "/products/:product_id/comments" , method: :POST , class: "comment__btn--link",id: "comment__btn--link"
+        = icon('fas', 'comment')
+
+    .other-products
+      .other-products__links
+        .other-products__links--privious
+          = icon('fas', 'chevron-left')
+          = link_to "前の商品", "/" , method: :post , class: ""
+
+        .other-products__links--next
+          = link_to "次の商品", "/" , method: :post , class: ""
+          = icon('fas', 'chevron-right')
+
+      .other-products__genre
+        メンズ
+        = link_to "もっと見る", "/" , method: :post , class: ""
+
+  = render "/partial/footer"
+
