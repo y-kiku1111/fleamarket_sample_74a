@@ -28,12 +28,12 @@
 |name|string|null: false|
 |explanation|text|null: false|
 |price|integer|null: false|
+|brand|string|
 |status|integer|null: false|
 |bear|integer|null: false|
 |days|integer|null: false|
-|user|reference|foreign_key: true, null: false|
-|category|reference|foreign_key: true, null: false|
-|brand|reference|foreign_key: true, null: false|
+|user_id|integer|foreign_key: true, null: false|
+|category_id|integer|foreign_key: true, null: false|
 
 ### Association
 - has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
@@ -41,7 +41,6 @@
 - has_many :comments
 - belongs_to :category
 - belongs_to :user
-- belongs_to :brand
 
 
 ## addressesテーブル
@@ -52,7 +51,7 @@
 |city|string|null: false|
 |other|string|null: false|
 |building_name|string|
-|user|reference|foreign_key: true, null: false|
+|user_id|integer|foreign_key: true, null: false|
 
 ### Association
 - belongs_to :user
@@ -64,7 +63,7 @@
 |------|----|-------|
 |customer_id|string|null: false|
 |card_id|string|null: false|
-|user|reference|foreign_key: true, null: false|
+|user_id|integer|foreign_key: true, null: false|
 
 ### Association
 - belongs_to :user
@@ -75,7 +74,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|reference|foreign_key: true, null: false|
-|product|reference|foreign_key: true, null: false|
+|product_id|integer|foreign_key: true, null: false|
 
 ### Association
 - belongs_to :product
@@ -87,7 +86,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |photo|string|null: false|
-|product|reference|foreign_key: true, null: false|
+|product_id|integer|foreign_key: true, null: false|
 
 ### Association
 - belongs_to :product
@@ -99,7 +98,7 @@
 |------|----|-------|
 |text|text|null: false|
 |user|reference|foreign_key: true, null: false|
-|product|reference|foreign_key: true, null: false|
+|product_id|integer|foreign_key: true, null: false|
 
 ### Association
 - belongs_to :user
@@ -117,12 +116,4 @@
 - has_many :products
 
 
-## brandsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :product
 
