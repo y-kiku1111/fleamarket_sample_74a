@@ -1,12 +1,5 @@
 class CommentsController < ApplicationController
 
-  # before_action :set_like
-
-  # def set_like
-   
-  # end
-
-
   def show
     # @comments= Comment.all
   end
@@ -15,7 +8,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
  
     @comment = Comment.create(comment_params)
-    # binding.pry
     respond_to do |format|
       format.html { redirect_to root_path }
       format.json
@@ -24,7 +16,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    binding.pry
     params.require(:comment).permit(:text).merge(user_id: current_user.id, product_id: params[:product_id])
     
   end

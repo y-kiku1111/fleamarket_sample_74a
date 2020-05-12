@@ -14,18 +14,11 @@ class ProductsController < ApplicationController
     # product_id = params[:id]
     @comments = Comment.where(product_id: params[:id])
     # @comments = Comment.where(product_id: params[:product_id])
-    # binding.pry
 
   end
 
   def new
     @product = Product.new
   end
-
-
-  # def set_group
-  #   @product = Product.find(params[:id])
-  #   # binding.pry
-  # end
 
 end
