@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 
   # has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
-  has_many :product_photos
+  has_many :product_photos, dependent: :destroy
   has_many :comments
   belongs_to :category
   belongs_to :user
@@ -12,5 +12,6 @@ class Product < ApplicationRecord
   enum days: { １〜２日で発送: 0, ２〜３日で発送: 1, ４〜７日で発送: 2}
 
   accepts_nested_attributes_for :product_photos
+  
   
 end
