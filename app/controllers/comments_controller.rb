@@ -1,12 +1,7 @@
 class CommentsController < ApplicationController
 
-  def show
-    # @comments= Comment.all
-  end
-
   def create
     @comment = Comment.new
- 
     @comment = Comment.create(comment_params)
     respond_to do |format|
       format.html { redirect_to root_path }

@@ -1,10 +1,6 @@
 $(function(){
 
   function buildHTML(comment) {
-
-    // date1 = date.substr( 0, 10 );
-    // date2 = date.substr( 11, 5 );
-    // date = date1 +"_"+ date2
     
     var html = `<div class="comment__history--name">
                   <i class="fas fa-user"></i>

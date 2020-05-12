@@ -22,8 +22,14 @@
             送料込み
       
       .main-content__purchase
-        %button.main-content__purchase--btn
-          購入場面に進む
+        -if current_user.id = @product.user_id
+          %button.main-content__purchase--btn
+            購入場面に進む
+            =@product
+        - else
+          %button.main-content__purchase--btn
+            EDIT
+          
 
       .main-content__description
         = @product.explanation
