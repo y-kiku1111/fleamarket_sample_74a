@@ -22,14 +22,12 @@
             送料込み
       
       .main-content__purchase
-        -if current_user.id = @product.user_id
+        -if (current_user.id == @product.user_id)
           %button.main-content__purchase--btn
-            購入場面に進む
-            =@product
+            表品の修正
         - else
           %button.main-content__purchase--btn
-            EDIT
-          
+            購入に進む
 
       .main-content__description
         = @product.explanation
@@ -100,24 +98,27 @@
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
 
       .comment__btn
-        %button.comment__btn--link{id: "comment__btn--link"} 
-          コメントする
-          = icon('fas', 'comment')
-
+        -if (current_user.id?)
+          %button.comment__btn--link{id: "comment__btn--link"} 
+            コメントする
+            = icon('fas', 'comment')
+        -else
+          %button.comment__btn--link
+            ログインしてください
 
     .other-products
       .other-products__links
         .other-products__links--privious
           = icon('fas', 'chevron-left')
-          = link_to "前の商品", "/" , method: :post , class: ""
+          = link_to "前の商品","products/#{@product.id - 1}", method: :post 
 
         .other-products__links--next
-          = link_to "次の商品", "/" , method: :post , class: ""
+          = link_to "前の商品","products/#{@product.id + 1}", method: :post 
           = icon('fas', 'chevron-right')
 
       .other-products__genre
         メンズ
-        = link_to "もっと見る", "/" , method: :post , class: ""
+        = link_to "もっと見る", "/" , method: :post 
 
   = render "/partial/footer"
 
