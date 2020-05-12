@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :products
   resources :users
-  # resources :comments
+  resources :likes, only: [:edit, :update]
 
   resources :products do
-    resources :comments, only: [:index, :create]
+    resources :comments, only: [:create]
   end
 
 end

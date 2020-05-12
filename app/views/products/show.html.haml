@@ -20,6 +20,10 @@
             (税込)
           .main-content__price--detail-shipFee 
             送料込み
+      
+      .main-content__purchase
+        %button.main-content__purchase--btn
+          購入場面に進む
 
       .main-content__description
         = @product.explanation
@@ -61,14 +65,28 @@
               日で発送
 
       .main-content__btn
-        .main-content__btn--like
+        %button.main-content__btn--like{id: "like-btn"}
           = icon('fas', 'star')
-          お気に入り 0
+          お気に入り 
+          .numLike{id: "numLike"}
+            =@like.like
         .main-content__btn--report
           = icon('fab', 'font-awesome-flag')
           不適切な商品の通報
-
+    
     .comment
+      .comment__history{id: "comment__history"}
+        - if @comments
+          - @comments.each do |comment|
+            .comment__history--name
+              = icon('fas', 'user')
+              = comment.user.nickname
+            .comment__history--content
+              = comment.text
+              .comment__history--content-date
+                Date:
+                = comment.created_at
+
       %input.comment__input{id: "comment__input", name: "", type: "text", value: "", placeholder: ""}
       .comment__caution
         相手のことを考え丁寧なコメントを心がけましょう。
@@ -76,8 +94,10 @@
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
 
       .comment__btn
-        = link_to "コメントする", product_comments_path, method: :POST , class: "comment__btn--link",id: "comment__btn--link"
-        = icon('fas', 'comment')
+        %button.comment__btn--link{id: "comment__btn--link"} 
+          コメントする
+          = icon('fas', 'comment')
+
 
     .other-products
       .other-products__links

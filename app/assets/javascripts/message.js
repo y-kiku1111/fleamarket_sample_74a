@@ -1,43 +1,62 @@
 $(function(){
-  
+
+  function buildHTML(comment) {
+
+    // date1 = date.substr( 0, 10 );
+    // date2 = date.substr( 11, 5 );
+    // date = date1 +"_"+ date2
+    
+    var html = `<div class="comment__history--name">
+                  <i class="fas fa-user"></i>
+                    ${comment.nickname}
+                  </div>
+                  <div class="comment__history--content">
+                    ${comment.text}
+                  <div class="comment__history--content-date">
+                    date:
+                    ${comment.created_at}
+                  </div>
+                </div>`
+    return html;
+  }
+      
   $("#comment__btn--link").on('click', function(e){
     e.preventDefault();
 
-        var formData = new FormData(this);
-    // var url = $(this).attr('action');
 
-    debugger
+    var $dir = location.href.split("/");
+    var dir2 = $dir[$dir.length -1];
 
+    var content = $(`#comment__input`).val()
+    var formData = {"comment" :{ "text" :content}};
+
+    console.log(formData)
+   
+    $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+      var token;
+      if (!options.crossDomain) {
+      token = $('meta[name="csrf-token"]').attr('content');
+         if (token) {
+            return jqXHR.setRequestHeader('X-CSRF-Token', token);
+          }
+       }
+    });
+
+    $.ajax({
+      url: `/products/${dir2}/comments`,
+      type: "POST",
+      data: formData,
+      dataType: 'json',
+    })
+
+    .done(function(data){ 
+      var html = buildHTML(data);
+      $('#comment__history').append(html);
+      $('#comment__input').val('');
+    })
+
+    .fail(function(){
+      alert("メッセージ送信に失敗しました");
+    })
   })
-  
-//   $('#comment__btn--link').click(function(e){
-//     e.preventDefault();
-
-//     var formData = new FormData(this);
-//     var url = $(this).attr('action');
-
-//     debugger
-
-//     $.ajax({
-//       url: url,
-//       type: "POST",
-//       data: formData,
-//       dataType: 'json',
-//       processData: false,
-//       contentType: false
-//     })
-
-//     .done(function(data){ 
-//       var html = buildHTML(data);
-//       $('.messages').append(html);
-//       $('form')[0].reset();
-//       $('.main-chat__footer--sendbtn').prop('disabled', false);
-//       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
-//     })
-
-//     .fail(function(){
-//       alert("メッセージ送信に失敗しました");
-//     })
-//   })
-
 })
