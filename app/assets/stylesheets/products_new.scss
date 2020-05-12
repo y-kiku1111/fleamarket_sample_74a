@@ -71,6 +71,10 @@ input {
           margin: 10px 0 10px;
           font-size: 13px;
         }
+        #image-box-1 {
+          display: flex;
+          flex-wrap: wrap;
+        }
         .photo_space{
           position: relative;
           background-color: rgb(245, 245, 245);
@@ -88,10 +92,10 @@ input {
               
               i {
                 position: absolute;
-                left: 20px;
+                padding-right: 500px;
+                height: 75px;
+                padding-left: 20px;
                 top: 20px;
-                padding-right: 400px;
-                height: 70px;
               }
               input {
                 display: none;

@@ -11,13 +11,16 @@
             出品画像
           %span.required 必須
           %p.upload_limit 最大10枚までアップロードできます
+          #image-box-1
+            .item-num-0#image-box__container
           %div.photo_space
             ドラッグ&ドロップまたはクリックしてファイルをダウンロード
             .file__box
               = form.fields_for :product_photos do |m|
                 = m.label :photo, class: "form-image" do
-                  %i.fa.fa-image
-                  = m.file_field :photo
+                  = m.file_field :photo, type: 'file', name: "item[images_attributes][][image_url]", value:"", style: "display:none", id:"img-file"
+                  %label{for: "img-file"}
+                    %i.fas.fa-camera
 
         .new_page_main__name
           %span.label_title
