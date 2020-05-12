@@ -78,6 +78,7 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
+gem 'ancestry'
 gem 'enum_help'
 gem 'rails-i18n'
 
