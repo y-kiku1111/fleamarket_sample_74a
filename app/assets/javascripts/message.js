@@ -24,9 +24,8 @@ $(function(){
     var dir2 = $dir[$dir.length -1];
 
     var content = $(`#comment__input`).val()
-    var formData = {"comment" :{ "text" :content}};
 
-    console.log(formData)
+    var formData = {"comment" :{ "text" :content}};
    
     $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
       var token;
