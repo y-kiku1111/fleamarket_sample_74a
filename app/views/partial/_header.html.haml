@@ -32,9 +32,6 @@
         %li.Header__left-nav--brand
           = link_to 'ブランド','#',class:'Header__navBtn'
       %ul.Header__right-nav
-        %li.Header__right-list
-          = link_to 'ログイン','users/sign_in',class:'Header__navBtn'
-        %li.Header__right-list
         -if user_signed_in?
           %li.Header__right-list
             = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'Header__navBtn'
