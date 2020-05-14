@@ -71,7 +71,12 @@ input {
           margin: 10px 0 10px;
           font-size: 13px;
         }
+        #image-box-1 {
+          display: flex;
+          flex-wrap: wrap;
+        }
         .photo_space{
+          position: relative;
           background-color: rgb(245, 245, 245);
           text-align: center;
           height: 150px;
@@ -79,10 +84,23 @@ input {
           margin-bottom: 30px;
           font-size: 14px;
           color: #aaaaaa;
-          img {
-            width: 12px;
-            height: 12px;
-            background-color: #aaaaaa;
+          .file__box {
+            position: absolute;
+            top: 47px;
+            left: 83px;
+            .form-image {
+              
+              i {
+                position: absolute;
+                padding-right: 500px;
+                height: 75px;
+                padding-left: 20px;
+                top: 20px;
+              }
+              input {
+                display: none;
+              }
+            }
           }
         }
 
@@ -314,6 +332,17 @@ input {
       .exhibit {
         color: white;
         background-color: #3CCACE;
+        .submit-exhibit {
+          color: white;
+          background-color: #3CCACE;
+          margin: 30px auto;
+          display: block;
+          width: 350px;
+          height: 45px;
+          font-size: 16px;
+          font-weight: bold;
+          border-radius: 4px;
+        }
       }
 
       .save {

@@ -1,48 +1,52 @@
 %body
-  %header.render.using.kuriyamasan.format
+  = render "/partial/header"
 
   .wrapper-product-dtail
-
     .main-content
       %h1.item-name underground WT142 pro carbon カイトサーフィン
       .main-content__photo
-        %img.item-main-content__photo--big{:alt => "underground WT142 pro carbon カイトサーフィン", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656", :src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656", :style => "opacity: 1;"}/
+        = image_tag "/images/products/sample.3.jpg", class:'item-main-content__photo--big'
       
       .main-content__photoSub
-        %img.main-content__photoSub--small{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656"}/
-        %img.main-content__photoSub--small{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_2.jpg?1588653656"}/
+        = image_tag "/images/products/sample4.jpeg", class:'main-content__photoSub--small'
+        = image_tag "/images/products/sample6.jpeg", class:'main-content__photoSub--small'
 
       .main-content__price
-        ¥12,000
+        %p.lower-message__content
+          = @product.price
+          円
         %span.main-content__price--detail
           .main-content__price--detail-tax 
             (税込)
           .main-content__price--detail-shipFee 
             送料込み
+      
+      .main-content__purchase
+        -if (current_user.id == @product.exhibitor_user_id)
+          %button.main-content__purchase--btn
+            表品の修正
+        - else
+          %button.main-content__purchase--btn
+            購入に進む
 
       .main-content__description
-        親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
-      
+        = @product.explanation
+
       %table.main-content__table{border: "1" ,style: "border-collapse: collapse"}
         %tbody
           %tr
             %th 出品者
             %td
-              %a{:href => "https://www.mercari.com/"} hoge
+              = link_to "hoge", user_path , method: :post , class: ""
               %div
           %tr
             %th カテゴリー
             %td
-              %a{:href => "https://www.mercari.com/"}
-                %div スポーツ・レジャー
-              %a{:href => "https://www.mercari.com/"}
-                .item-detail-table-sub-category
-                  %i.icon-arrow-right
-                  その他スポーツ
-              %a{:href => "https://www.mercari.com/"}
-                .item-detail-table-sub-sub-category
-                  %i.icon-arrow-right
-                  その他
+              = link_to "スポーツ・レジャー", user_path , method: :post , class: ""
+              %br
+                = link_to "その他スポーツ",user_path , method: :post , class: ""
+                %br
+                  = link_to "その他",user_path , method: :post , class: ""
           %tr
             %th ブランド
             %td
@@ -60,37 +64,61 @@
             %td 青森県
           %tr
             %th 発送日の目安
-            %td 	1-2日で発送
+            %td 
+              = @product.days
+              日で発送
 
       .main-content__btn
-
-        .main-content__btn--like
+        %button.main-content__btn--like{id: "like-btn"}
           = icon('fas', 'star')
-          お気に入り 0
+          お気に入り 
+          .numLike{id: "numLike"}
+            0
         .main-content__btn--report
           = icon('fab', 'font-awesome-flag')
           不適切な商品の通報
-
+    
     .comment
-      %input.comment__input{id: "", name: "", type: "text", value: "", :placeholder =>""}
+      .comment__history{id: "comment__history"}
+        - if @comments
+          - @comments.each do |comment|
+            .comment__history--name
+              = icon('fas', 'user')
+              = comment.user.nickname
+            .comment__history--content
+              = comment.text
+              .comment__history--content-date
+                Date:
+                = comment.created_at
+
+      %input.comment__input{id: "comment__input", name: "", type: "text", value: "", placeholder: ""}
       .comment__caution
         相手のことを考え丁寧なコメントを心がけましょう。
         %br
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      
+
       .comment__btn
-        = icon('fas', 'comment')
-        コメントする
+        -if (current_user.id?)
+          %button.comment__btn--link{id: "comment__btn--link"} 
+            コメントする
+            = icon('fas', 'comment')
+        -else
+          %button.comment__btn--link
+            ログインしてください
 
     .other-products
       .other-products__links
-        %a.other-products__links-privious{:href => "https://www.mercari.com/"}
+        .other-products__links--privious
           = icon('fas', 'chevron-left')
-          前の商品
-        %a.other-products__links-next{:href => "https://www.mercari.com/"}
-          次の商品
+          = link_to "前の商品","products/#{@product.id - 1}", method: :post 
+
+        .other-products__links--next
+          = link_to "前の商品","products/#{@product.id + 1}", method: :post 
           = icon('fas', 'chevron-right')
 
       .other-products__genre
-        %a.other-products__links-privious{:href => "https://www.mercari.com/"}
-          メンズもっと見る
+        メンズ
+        = link_to "もっと見る", "/" , method: :post 
+
+  = render "/partial/footer"
+

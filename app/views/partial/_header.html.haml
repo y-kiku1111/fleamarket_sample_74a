@@ -3,28 +3,35 @@
     .Header__top
       .Header__icon
         = link_to '/' do
-          = image_tag "/assets/logo/logo.png",class:"Header__logo"
+          = image_tag "/images/logo/logo.png",class:"Header__logo"
       .Header__search-Box
         %form.Header__form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
           %input{:name => "utf-8", :type => "hidden", :value => ""}/
           %input#searchInput.Header__input{:name => "key", :placeholder => "キーワードから探す"}/
           %button.Header__button{:type => "submit"}
             %div
-              = image_tag "/assets/icon/icon-search 1.png",class:"Header__search-Box__icon"
+              = image_tag "/images/icon/icon-search 1.png",class:"Header__search-Box__icon"
       %ul.Header__resultLists
     %nav.Header__nav
       %ul.Header__left-nav
-        %li.Header__left-list
+        %li.Header__left-nav--category
           = link_to 'カテゴリー','#',class:'Header__navBtn'
-        %li.Header__left-list
+          %ul.category1
+            - @parents.each do |parent|
+              %li.parent__list
+                = link_to parent.name
+                %ul.category2
+                  - parent.children.each do |child|
+                    %li.child__list
+                      =link_to child.name
+                      %ul.category3
+                        - child.children.each do |grandchild|
+                          %li.grandchild__list
+                            = link_to grandchild.name
+                            
+        %li.Header__left-nav--brand
           = link_to 'ブランド','#',class:'Header__navBtn'
       %ul.Header__right-nav
-<<<<<<< Updated upstream
-        %li.Header__right-list
-          = link_to 'ログイン','#',class:'Header__navBtn'
-        %li.Header__right-list
-          = link_to '新規会員登録','#',class:'Header__navBtn'
-=======
         -if user_signed_in?
           %li.Header__right-list
             = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'Header__navBtn'
@@ -35,4 +42,3 @@
             = link_to 'ログイン',user_session_path,method: :post, class:'Header__navBtn'
           %li.Header__right-list
           = link_to '新規会員登録',new_user_registration_path,class:'Header__navBtn'
->>>>>>> Stashed changes
