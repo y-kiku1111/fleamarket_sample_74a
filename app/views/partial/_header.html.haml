@@ -19,7 +19,20 @@
         %li.Header__left-list
           = link_to 'ブランド','#',class:'Header__navBtn'
       %ul.Header__right-nav
+<<<<<<< Updated upstream
         %li.Header__right-list
           = link_to 'ログイン','#',class:'Header__navBtn'
         %li.Header__right-list
           = link_to '新規会員登録','#',class:'Header__navBtn'
+=======
+        -if user_signed_in?
+          %li.Header__right-list
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'Header__navBtn'
+          %li.Header__right-list
+          = link_to 'マイページ', "/users/#{current_user.id}",class:'Header__navBtn'
+        -else
+          %li.Header__right-list
+            = link_to 'ログイン',user_session_path,method: :post, class:'Header__navBtn'
+          %li.Header__right-list
+          = link_to '新規会員登録',new_user_registration_path,class:'Header__navBtn'
+>>>>>>> Stashed changes
