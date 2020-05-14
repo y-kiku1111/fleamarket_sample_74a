@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-
+    @parents = Category.where(ancestry: nil)  
   end
 
   def show
