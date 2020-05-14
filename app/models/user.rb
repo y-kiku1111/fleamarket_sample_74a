@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :likes
-  has_many :products
+  has_many :saling_items, foreign_key: "exhibitor_user_id", class_name: "Product" 
+  has_many :saling_items, foreign_key: "buyer_user_id", class_name: "Product" 
   has_many :comments
   has_many :cards
   has_one :address
 
-  mount_uploader :profile_photo, ImgNameUploader
 end

@@ -1,5 +1,3 @@
-// プレビュー機能
-
 $(function(){
   var dataBox = new DataTransfer();
   var file_field = document.querySelector('input[type=file]')
@@ -53,13 +51,8 @@ $(function(){
     $('#image-box__container').show()
     $('#image-box__container').attr('class', `item-num-${num}`)
   })
-});
 
-
-// ドラッグ％ドロップ
-
-new_item.js
-var dropArea = document.getElementById("image-box-1");
+  var dropArea = document.getElementById("image-box-1");
 
 //loadイベント発生時に発火するイベント
 window.onload = function(e){
@@ -72,7 +65,7 @@ window.onload = function(e){
   //ドラッグした要素がドロップターゲットから離れた時に発火するイベント
   dropArea.addEventListener("dragleave", function(e){
     e.preventDefault();
-　　 //ドロップエリアの影が消える
+ //ドロップエリアの影が消える
     $(this).children('#image-box__container').css({'border': '1px dashed rgb(204, 204, 204)','box-shadow': '0px 0px 0px'})      
   },false);
   //ドラッグした要素をドロップした時に発火するイベント
@@ -118,10 +111,6 @@ window.onload = function(e){
   })
 }
 
-
-// 金額の自動計算
-
-$(function(){
   $( document ).on( 'change', '#price-result', function(){
     var s = $( this ).val();
     var result_tax = s / 10;
@@ -130,3 +119,6 @@ $(function(){
     $('.haihun_profit').html(result_profit);
   });
 });
+
+
+

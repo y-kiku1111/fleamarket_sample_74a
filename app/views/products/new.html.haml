@@ -5,7 +5,7 @@
 
   .new_page_main
     .new_page_main__index
-      = form_with(url: products_path, local: true) do |form|
+      = form_with model: @product, local: true do |form|
         .new_page_main__photo
           %span.label_title 
             出品画像
@@ -18,7 +18,7 @@
             .file__box
               = form.fields_for :product_photos do |m|
                 = m.label :photo, class: "form-image" do
-                  = m.file_field :photo, type: 'file', name: "item[images_attributes][][image_url]", value:"", style: "display:none", id:"img-file"
+                  = m.file_field :photo, :multiple => true, type: 'file', id:"img-file"
                   %label{for: "img-file"}
                     %i.fas.fa-camera
 
@@ -42,7 +42,8 @@
             カテゴリー
           %span.required 必須
           %p
-            = form.collection_select(:category_id, Category.all, :id, :name)
+            -# = form.collection_select(:category_id, Category.all, :id, :name)
+            = form.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
               
         .new_page_main__brand
           %span.label_title
