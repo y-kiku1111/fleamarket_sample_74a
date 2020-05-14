@@ -1,0 +1,68 @@
+%body.post-template
+
+  %header.purchase-confirm
+    =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "header-icon" 
+
+  .wrapper-purchase-confirm
+    %h2.title
+      購入内容の確認
+    
+    %section.product-info
+      %img.product-info__photo{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656"}/
+      .product-info__name
+        新品未使用★ ロングボードセンターフィン
+
+    %section.product-info-sub
+      .product-info-sub__price
+        ¥12,000
+      .main-content-sub__tax 
+        (税込)
+      .main-content-sub__shipFee 
+        送料込み
+
+    %section.product-price
+      .product-price__title
+        支払い金額
+      .product-price__amount
+        ¥12,000
+
+    %section.purchase-method
+      .purchase-method__titile
+        支払い方法
+        =link_to "変更する/新規登録", new_product_card_path(@product.id), method: :get , class: "change"
+        -# =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
+      
+      .purchase-method__how
+        .purchase-method__how--name
+          クレジットカード
+        .purchase-method__how--number
+          1111-1111-1111
+        .purchase-method__how--exp
+          有効期限 07 / 22
+        .purchase-method__how--logo
+          = icon('fas', 'credit-card')
+        
+
+    %section.purchase-shipping
+      .purchase-shipping__titile
+        配送先
+        =link_to "変更する", new_product_path, method: :get , class: "change"
+
+      .purchase-shipping__where
+        .purchase-shipping__where--pcode
+          〒321-0634
+        .purchase-shipping__where--address
+          栃木県 那須烏山市 野上988-1 プラシードC 101号
+        .purchase-shipping__where--name
+          Robby Naish
+
+
+    .purchase-btn
+      =link_to "購入する", buy_product_cards_path(@product.id), method: :get , class: "purchase"
+
+  %footer.purchase-confirma
+    .purchase-confirm__rule
+      プライバシーポリシー FURIMA利用規約
+      %br
+        特定商取引に関する表記
+    =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "footer-icon" 
