@@ -1,0 +1,22 @@
+.sign-up-wrapper
+  %header.sign-up__header
+    = link_to '#' do
+      = image_tag "/assets/logo/logo.png"
+
+  %main.sign-up-content
+    %h2.sign-up-content__head 登録が完了しました。
+    %section.sign-up-content__main
+      .sign-up-content__main__form
+        .sign-up-content__main__form__actions
+          = link_to "トップへ戻る", root_path,class:"sign-up-content__main__form__actions__button"
+
+  %footer.sign-up-content__footer
+    .sign-up-content__footer__other
+      %span プライバシーポリシー
+      %span フリマアプリ規約
+      %span 特定商取引に関する表記
+    .sign-up-content__footer__logo
+      = link_to '#' do
+        = image_tag "/assets/logo/logo.png"
+    .sign-up-content__footer__name
+      %p &copy Furimaapuri
