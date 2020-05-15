@@ -12,9 +12,11 @@ class User < ApplicationRecord
 
 
   has_many :likes
-  has_many :products
+  has_many :saling_items, foreign_key: "exhibitor_user_id", class_name: "Product"
+  has_many :saling_items, foreign_key: "buyer_user_id", class_name: "Product"
   has_many :comments
   has_many :cards
   has_one :address
 
+  
 end
