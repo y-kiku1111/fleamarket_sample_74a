@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :products
   
   resources :users
-
+  resources :likes, only: [:create, :destroy]
   resources :products do
-    resources :comments, only: [:index, :create]
+    resources :comments, only: [:create]
   end
 
 end

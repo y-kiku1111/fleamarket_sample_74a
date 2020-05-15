@@ -1,11 +1,16 @@
 class ProductsController < ApplicationController
 
   def index
+
     @products = Product.all.includes(:product_photos).order(created_at: :desc)
+    @parents = Category.where(ancestry: nil)  
+
   end
 
   def show
-    @product = Product.find(1)
+
+    @product = Product.find(params[:id])
+    @comments = Comment.where(product_id: params[:id])
   end
 
   def new
