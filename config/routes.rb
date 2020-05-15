@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :destroy]
   resources :cards, only: :new
   resources :products
+  
   resources :users
 
   resources :products do
