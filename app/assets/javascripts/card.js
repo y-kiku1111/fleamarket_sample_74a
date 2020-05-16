@@ -27,7 +27,7 @@ document.addEventListener(
             document.inputForm.submit();
             alert("登録が完了しました"); //確認用
           } else {
-            // debugger
+            debugger
             alert("カード情報が正しくありません。"); //確認用
           }
         });

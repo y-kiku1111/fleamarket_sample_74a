@@ -10,11 +10,11 @@
     %section.product-info
       %img.product-info__photo{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656"}/
       .product-info__name
-        新品未使用★ ロングボードセンターフィン
+        =@product.name
 
     %section.product-info-sub
       .product-info-sub__price
-        ¥12,000
+        ="¥"+ "#{@product.price}"
       .main-content-sub__tax 
         (税込)
       .main-content-sub__shipFee 
@@ -24,23 +24,29 @@
       .product-price__title
         支払い金額
       .product-price__amount
-        ¥12,000
+        ="¥"+ "#{@product.price}"
 
     %section.purchase-method
       .purchase-method__titile
         支払い方法
-        =link_to "変更する/新規登録", new_product_card_path(@product.id), method: :get , class: "change"
-        -# =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
-      
-      .purchase-method__how
-        .purchase-method__how--name
-          クレジットカード
-        .purchase-method__how--number
-          1111-1111-1111
-        .purchase-method__how--exp
-          有効期限 07 / 22
-        .purchase-method__how--logo
-          = icon('fas', 'credit-card')
+        - if Card.where(user: current_user).exists?
+          =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
+          -# =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
+        
+          .purchase-method__how
+            .purchase-method__how--name
+              クレジットカード
+            .purchase-method__how--number
+              = "**** **** **** " + "#{@default_card_information.last4}"
+            .purchase-method__how--exp
+              = "有効期限"  + "#{@default_card_information.exp_month}"+"/" "#{@default_card_information.exp_year}"
+            .purchase-method__how--logo
+              = icon('fas', 'credit-card')
+              = @default_card_information.brand
+        - else
+          =link_to "新規登録", new_product_card_path(@product.id), method: :get , class: "change"
+          決済方法を登録してください
+
         
 
     %section.purchase-shipping
@@ -58,11 +64,16 @@
 
 
     .purchase-btn
-      =link_to "購入する", buy_product_cards_path(@product.id), method: :get , class: "purchase"
+      - if Card.where(user: current_user).exists?
+        =link_to "購入する", pay_product_cards_path(@product.id), method: :post , class: "purchase"
+      - else
+        決済方法を登録してください
 
   %footer.purchase-confirma
     .purchase-confirm__rule
       プライバシーポリシー FURIMA利用規約
       %br
         特定商取引に関する表記
-    =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "footer-icon" 
+      =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "footer-icon" 
+
+      

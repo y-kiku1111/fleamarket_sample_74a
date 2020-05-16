@@ -7,7 +7,7 @@
       %section.mypage-content__chapter-container
         %h2.signup-main__chapter-head
           クレジットカード情報入力
-        = form_with model: @card, url: pay_product_cards_path(@product.id), method: 'POST', id: 'charge-form', class: 'signup-main__inner--registration-form', novalidate: 'novalidate', html: { name: 'inputForm' } do |f|
+        = form_with model: @card, url: "/products/#{@product.id}/cards", method: 'POST', id: 'charge-form', class: 'signup-main__inner--registration-form', novalidate: 'novalidate', html: { name: 'inputForm' } do |f|
           
           .signup-main__content
             .signup-main__form-group
@@ -37,11 +37,11 @@
               %span.signup-main__form-require 必須
               %br
               .signup-main__select-wrap--half
-                = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'form-signup__month__select', id:'exp_month'
+                = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'form-signup__month__select', id:'exp_month', value: @default_card_information.exp_month
                 %i.fas.fa-chevron-down
                 %span.month-year 月
               .signup-main__select-wrap--half
-                = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'form-signup__month__select', id:'exp_year'
+                = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'form-signup__month__select', id:'exp_year', value: @default_card_information.exp_year
                 = icon 'fas', 'chevron-down'
                 %span.month-year 年
               %ul.signup-main__has-error-text{ id: 'expire-mm-error-wrapper' }
@@ -59,3 +59,6 @@
 
             #card_token
             = submit_tag "追加する" ,id: "token_submit", class: "top__margin"
+
+    -# = render "card-list"
+

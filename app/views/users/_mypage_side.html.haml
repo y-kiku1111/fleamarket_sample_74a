@@ -75,7 +75,7 @@
           発送元・お届け先住所変更    
           %i.fas.fa-chevron-right
       %li
-        =link_to new_card_path, class: "mypage-nav__list-setting-item" do
+        =link_to "/products/#{@product.id}/cards", class: "mypage-nav__list-setting-item" do
           支払い方法  
           %i.fas.fa-chevron-right
       %li

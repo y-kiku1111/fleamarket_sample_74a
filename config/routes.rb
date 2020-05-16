@@ -15,7 +15,6 @@ Rails.application.routes.draw do
         post 'pay', to: 'cards#pay'
         post 'delete', to: 'card#delete'
         post 'show'
-        get  'buy'
       end
       member do
         get 'confirmation'

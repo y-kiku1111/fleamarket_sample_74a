@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_070002) do
     t.datetime "updated_at", null: false
     t.string "brand"
     t.integer "exhibitor_user_id", null: false
-    t.integer "buyer_user_id", null: false
+    t.integer "buyer_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
