@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create]
   resources :users, only: [:show, :destroy]
   resources :cards, only: :new
+
+  # ↓多分いらない
   resources :products
   
   resources :users
@@ -22,4 +24,13 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :users, only: [:index, :show] do
+    resources :cards,  only: [:index, :destroy]do
+      collection do
+        post 'delete', to: 'card#delete'
+      end
+    end
+  end
+
 end
