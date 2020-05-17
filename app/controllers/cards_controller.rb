@@ -1,36 +1,31 @@
 class CardsController < ApplicationController
   require "payjp"
 
-  before_action :get_payjp_info, only: [:create, :delete, :show, :new, :pay]
-  before_action :set_item
-  # before_action :set_item_delete
+  before_action :get_payjp_info, only: [:create, :delete, :show, :new, :pay, :index]
+  before_action :set_item, only: [:create, :delete, :show, :new, :pay]
 
   def set_item
     @product = Product.find(params[:product_id])
-    # card = Card.where(user_id: current_user.id)
     @card = Card.find_by(user_id: current_user.id)
     @cards = Card.where(user_id: current_user.id)
 
-    @default_card_information = Payjp::Customer.retrieve(@card.customer_id).cards.data[0]
-    # @default_card_informations = Payjp::Customer.where(@card.customer_id).cards
-    # binding.pry
- 
-    
+    unless @card == nil
+      @default_card_information = Payjp::Customer.retrieve(@card.customer_id).cards.data[0]
 
-    @cnt = 0
-    @cards.each do |card|
-      @cnt = @cnt + 1
-      # @inoue + (cnt.to_s) = "test"
-      # @"default_card_informations"&cnt = Payjp::Customer.retrieve(card.customer_id).cards
-      if @cnt == 1 
-        @default_card_information1 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
-      elsif @cnt == 2
-        @default_card_information2 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
-      elsif @cnt == 3
-        @default_card_information3 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+      @cnt = 0
+      @cards.each do |card|
+        @cnt = @cnt + 1
+        # @inoue + (cnt.to_s) = "test"
+        # @"default_card_informations"&cnt = Payjp::Customer.retrieve(card.customer_id).cards
+        if @cnt == 1 
+          @default_card_information1 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+        elsif @cnt == 2
+          @default_card_information2 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+        elsif @cnt == 3
+          @default_card_information3 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+        end
       end
     end
-    # binding.pry
   end
 
   # def set_item_delete
@@ -44,10 +39,33 @@ class CardsController < ApplicationController
   #   end
   # end
 
-  def new
+  def index
+
+    @card = Card.find_by(user_id: current_user.id)
+    @cards = Card.where(user_id: current_user.id)
+
+    unless @card == nil
+      @default_card_information = Payjp::Customer.retrieve(@card.customer_id).cards.data[0]
+
+      @cnt = 0
+      @cards.each do |card|
+        @cnt = @cnt + 1
+        # @inoue + (cnt.to_s) = "test"
+        # @"default_card_informations"&cnt = Payjp::Customer.retrieve(card.customer_id).cards
+        if @cnt == 1 
+          @default_card_information1 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+        elsif @cnt == 2
+          @default_card_information2 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+        elsif @cnt == 3
+          @default_card_information3 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+        end
+      end
+    end
+
   end
 
   def pay
+    @parents = Category.where(ancestry: nil)  
     @card = Card.find_by(user_id: current_user.id)
     @product.buyer_user_id = current_user.id
     @product.save!
