@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+
     @product = Product.find(params[:id])
+    @comments = Comment.where(product_id: params[:id])
   end
 
   def new
@@ -13,20 +15,19 @@ class ProductsController < ApplicationController
     @product.product_photos.build
 
     @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
+    Category.pluck(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
    end
 
   end
 
   def create
-    @product = Product.new(product_params)
-    binding.pry
-    if @product.save
-      redirect_to root_path, notice: '出品しました。'
+    product = Product.new(product_params)
+    if product.save
+      redirect_to root_path
     else
       @category_parent_array = ["---"]
-      Category.where(ancestry: nil).each do |parent|
+      Category.pluck(ancestry: nil).each do |parent|
         @category_parent_array << parent.name
       end
         render :new
