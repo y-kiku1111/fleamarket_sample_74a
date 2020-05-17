@@ -1,17 +1,27 @@
 Rails.application.routes.draw do
-  devise_for :users
+ 
+  # devise_for :users
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    get 'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
+  end
+
+
+  
   root to: "products#index"
-  resources :products, only: [:index, :new, :create]
-  resources :users, only: [:show, :destroy]
   resources :cards, only: :new
 
-  # ↓多分いらない
-  resources :products
-  
   resources :users
   resources :likes, only: [:create, :destroy]
-
   resources :products do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
     resources :comments, only: [:create]
     resources :cards do
       collection do
@@ -34,3 +44,4 @@ Rails.application.routes.draw do
   end
 
 end
+
