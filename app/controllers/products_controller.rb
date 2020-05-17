@@ -16,15 +16,26 @@ class ProductsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
    end
+
   end
 
   def create
-    product = Product.new(product_params)
-    if product.save
+    @product = Product.new(product_params)
+    binding.pry
+    if @product.save
       redirect_to root_path, notice: '出品しました。'
     else
-      render :new
+      @category_parent_array = ["---"]
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent.name
+      end
+        render :new
     end
+  end
+
+  def destroy
+    @product.destroy
+    redirect_to root_path
   end
 
   def get_category_children
@@ -38,6 +49,6 @@ class ProductsController < ApplicationController
   
   private
   def product_params
-    params.require(:product).permit( :name, :explanation, :category_id, :status, :bear, :brand, :days, :price, product_photos_attributes: {photo: []}).merge(exhibitor_user_id: current_user.id)
+    params.require(:product).permit( :name, :explanation, :category_id, :status, :bear, :brand, :days, :price, product_photos_attributes: [:photo, :_destroy, :id]).merge(exhibitor_user_id: current_user.id)
   end
 end
