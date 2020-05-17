@@ -14,11 +14,8 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.product_photos.build
 
-    @category_parent_array = ["---"]
-    Category.pluck(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-   end
-
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+    @category_parent_array.unshift("---")
   end
 
   def create
@@ -26,11 +23,10 @@ class ProductsController < ApplicationController
     if product.save
       redirect_to root_path
     else
-      @category_parent_array = ["---"]
-      Category.pluck(ancestry: nil).each do |parent|
-        @category_parent_array << parent.name
-      end
-        render :new
+      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+      @category_parent_array.unshift("---")      
+      
+      render :new
     end
   end
 

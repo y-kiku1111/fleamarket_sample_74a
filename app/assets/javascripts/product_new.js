@@ -1,6 +1,5 @@
 $(function(){
   // 画像複数枚&プレビュー
-  
   $(document).on('turbolinks:load', ()=> {
     const buildFileField = (num)=> {
       if (num < 10) {
@@ -54,17 +53,15 @@ $(function(){
   });
 
 
-// 金額の自動計算
+  // 金額の自動計算
 
-$(function(){
-  $( document ).on( 'change', '#price-result', function(){
-    var s = $( this ).val();
-    var result_tax = s / 10;
-    var result_profit = s * 0.9;
-    $('.haihun_tax').html(result_tax);
-    $('.haihun_profit').html(result_profit);
+  $(function(){
+    $( document ).on( 'change', '#price-result', function(){
+      var s = $( this ).val();
+      var result_tax = s / 10;
+      var result_profit = s * 0.9;
+      $('.haihun_tax').html(result_tax);
+      $('.haihun_profit').html(result_profit);
+    });
   });
 });
-
-
-

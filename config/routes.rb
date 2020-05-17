@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   resources :users
   resources :likes, only: [:create, :destroy]
   resources :products do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
     resources :comments, only: [:create]
     resources :cards do
       collection do
-        get 'get_category_children', defaults: { format: 'json' }
-        get 'get_category_grandchildren', defaults: { format: 'json' }
         post 'pay', to: 'cards#pay'
         post 'delete', to: 'card#delete'
         post 'show'
