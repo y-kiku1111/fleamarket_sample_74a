@@ -53,8 +53,10 @@ $(function(){
     });
   });
 
-// 自動計算
 
+// 金額の自動計算
+
+$(function(){
   $( document ).on( 'change', '#price-result', function(){
     var s = $( this ).val();
     var result_tax = s / 10;
