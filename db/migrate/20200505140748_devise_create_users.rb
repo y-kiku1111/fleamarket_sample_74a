@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name_furigana, null: false
       t.string :profile_photo
       t.date :birthday,             null: false
-      t.string :tel_number,         null: false
+      t.string :tel_number
       t.text :introduction
       t.string :email,              null: false, unique: true, default: ""
       t.string :encrypted_password, null: false, default: ""
