@@ -20,9 +20,19 @@ Rails.application.routes.draw do
   
   resources :users
   resources :likes, only: [:create, :destroy]
+
   resources :products do
     resources :comments, only: [:create]
+    resources :cards do
+      collection do
+        post 'pay', to: 'cards#pay'
+        post 'delete', to: 'card#delete'
+        post 'show'
+      end
+      member do
+        get 'confirmation'
+      end
+    end
   end
-
 end
 

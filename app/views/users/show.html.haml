@@ -1,3 +1,5 @@
+
+
 .mypage
   %main.mypage-contents.clearfix
     = render "mypage_side"
@@ -35,3 +37,16 @@
             %li.tab-content-transaction__notfound 取引中の商品がありません
           %ul.tab-content-transaction__old.hide
 
+%aside.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text 今すぐ無料ダウンロード
+    .inner__icon
+      = link_to '#', class: 'Btn' do
+        = image_tag "/images/logo/download-on-app-store.png",class:'app'
+      = link_to '#', class: 'Btn' do
+        = image_tag "/images/logo/btn_googleplay.png",class:'app'
+
+
+= render "/partial/footer"

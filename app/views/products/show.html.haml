@@ -27,7 +27,8 @@
             表品の修正
         - else
           %button.main-content__purchase--btn
-            購入に進む
+            = link_to "購入に進む" ,product_cards_path(@product.id), method: :post
+            -# = link_to "購入に進む" ,product_card_path(@product.id), method: :get
 
       .main-content__description
         = @product.explanation

@@ -58,7 +58,7 @@ $(function(){
 
 // ドラッグ％ドロップ
 
-new_item.js
+// new_item.js
 var dropArea = document.getElementById("image-box-1");
 
 //loadイベント発生時に発火するイベント
