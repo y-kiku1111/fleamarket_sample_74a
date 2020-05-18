@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    
+    @parents = Category.where(ancestry: nil) 
   end
 
 end
