@@ -43,11 +43,11 @@ class CardsController < ApplicationController
 
     @card = Card.find_by(user_id: current_user.id)
     @cards = Card.where(user_id: current_user.id)
+    @cnt = 0
 
     unless @card == nil
       @default_card_information = Payjp::Customer.retrieve(@card.customer_id).cards.data[0]
 
-      @cnt = 0
       @cards.each do |card|
         @cnt = @cnt + 1
         # @inoue + (cnt.to_s) = "test"

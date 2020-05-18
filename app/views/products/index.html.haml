@@ -95,8 +95,8 @@
           .product-box__list
             = link_to '#', class:'new-product' do
               %figure.product-box__img
-                -# -unless product.product_photos == nil
-                -#   = image_tag product.product_photos[0].photo.url, class:'pickup-size'
+                -unless product.product_photos == nil
+                  = image_tag product.product_photos[0].photo.url, class:'pickup-size'
                   -if product.buyer_user_id.present? 
                     .items-box_photo__sold
                       .items-box_photo__sold__inner SOLD
