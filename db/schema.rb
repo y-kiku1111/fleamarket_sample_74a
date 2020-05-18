@@ -12,6 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2020_05_12_082721) do
 
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "prefecture_id"
+    t.string "city", null: false
+    t.integer "postal_code", null: false
+    t.string "other", null: false
+    t.string "building_name"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "customer_id", null: false
     t.string "card_id", null: false
@@ -71,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_082721) do
     t.string "last_name_furigana", null: false
     t.string "profile_photo"
     t.date "birthday", null: false
-    t.string "tel_number"
+    t.string "tel_number", null: false
     t.text "introduction"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
