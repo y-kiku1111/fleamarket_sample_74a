@@ -32,7 +32,15 @@
         %li.Header__left-nav--brand
           = link_to 'ブランド','#',class:'Header__navBtn'
       %ul.Header__right-nav
-        %li.Header__right-list
-          = link_to 'ログイン','users/sign_in',class:'Header__navBtn'
-        %li.Header__right-list
-          = link_to '新規会員登録','users/sign_up',class:'Header__navBtn'
+
+        - if user_signed_in?
+          %li.Header__right-list
+            = link_to 'マイページ', '#',class:'Header__navBtn'
+          %li.Header__right-list
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete,class:'Header__navBtn'
+        - else
+          %li.Header__right-list
+            = link_to 'ログイン', new_user_session_path,class:'Header__navBtn'
+          %li.Header__right-list
+            = link_to '新規会員登録',new_user_registration_path,class:'Header__navBtn'
+

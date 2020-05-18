@@ -7,7 +7,7 @@
     %h2.signup-main__chapter-head
     クレジットカード一覧
 
-    = form_with model: @cards, url: delete_product_cards_path, method: 'POST', id: 'test' do |f|
+    = form_with model: @cards, url: delete_user_cards_path(current_user.id), method: 'POST', id: 'test' do |f|
       - if @cnt >= 1
         .purchase-method__how
           = submit_tag "削除する" 
