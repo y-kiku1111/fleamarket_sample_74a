@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
- 
-  # devise_for :users
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -10,12 +8,10 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-
-  
   root to: "products#index"
   resources :cards, only: :new
 
-  resources :users
+  resources :users, only: [:show, :destroy]
   resources :likes, only: [:create, :destroy]
   resources :products do
     collection do
