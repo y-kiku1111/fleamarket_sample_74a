@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-
-  
   root to: "products#index"
   resources :cards, only: :new
   resources :users
