@@ -1,3 +1,5 @@
+= render "/partial/header"
+
 .mypage
   %main.mypage-contents.clearfix
     = render "mypage_side"
@@ -9,4 +11,23 @@
           .signup-main__content
             = link_to destroy_user_session_path, method: 'delete', class: 'signup-main__btn-default' do
               ログアウト
-              
+
+%aside.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text 今すぐ無料ダウンロード
+    .inner__icon
+      = link_to '#', class: 'Btn' do
+        = image_tag "/images/logo/download-on-app-store.png",class:'app'
+      = link_to '#', class: 'Btn' do
+        = image_tag "/images/logo/btn_googleplay.png",class:'app'
+
+
+= render "/partial/footer"
+
+= link_to new_product_path , class: 'auction' do
+  .auction-Btn
+    %span.auction-Btn__text
+      出品する
+    =image_tag "/images/icon/icon_camera.png",class:'auction-Btn__icon' 
