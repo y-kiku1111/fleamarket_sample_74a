@@ -3,10 +3,13 @@
 
   .wrapper-product-dtail
     .main-content
-      %h1.item-name underground WT142 pro carbon カイトサーフィン
+      %h1.item-name 
+        = @product.name
       .main-content__photo
-        = image_tag "/images/products/sample.3.jpg", class:'item-main-content__photo--big'
-      
+        = image_tag @product.product_photos[0].photo.url, class:'item-main-content__photo--big'
+        -if @product.buyer_user_id.present? 
+          .items-box_photo__sold
+            .items-box_photo__sold__inner SOLD
       .main-content__photoSub
         = image_tag "/images/products/sample4.jpeg", class:'main-content__photoSub--small'
         = image_tag "/images/products/sample6.jpeg", class:'main-content__photoSub--small'
@@ -40,6 +43,7 @@
             %th 出品者
             %td
               = link_to "hoge", user_path , method: :post , class: ""
+               
               %div
           %tr
             %th カテゴリー

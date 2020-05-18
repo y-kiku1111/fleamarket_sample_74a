@@ -29,6 +29,34 @@ body{
         min-width: 280px;
         min-height: 280px;
         text-align:center;
+        position: relative;
+        .item-main-content__photo--big{
+          height: 280px;
+          width: 500px;
+        }
+        .items-box_photo__sold{
+          width: 0;
+          height: 0;
+          border-width: 150px 150px 0 0;
+          border-color: #ea352d transparent transparent transparent;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          border-style: solid;
+          &__inner{
+            top: -120px;
+            font-size: 30px;
+            position: absolute;
+            left: 0;
+            z-index: 2;
+            color: #fff;
+            transform: rotate(-45deg);
+            letter-spacing: 2px;
+            font-weight: 600;
+          }
+        }
       }
       
       &__photoSub{
