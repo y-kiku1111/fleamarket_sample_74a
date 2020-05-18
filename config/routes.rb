@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :cards, only: :new
   resources :products
   
-  resources :users
   resources :likes, only: [:create, :destroy]
 
   resources :products do
