@@ -24,22 +24,20 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
     resources :comments, only: [:create]
-    resources :cards do
+    resources :cards, only: [:index, :create, :show, :new] do
       collection do
         post 'pay', to: 'cards#pay'
-        post 'delete', to: 'card#delete'
         post 'show'
-      end
-      member do
-        get 'confirmation'
       end
     end
   end
 
   resources :users, only: [:index, :show] do
-    resources :cards,  only: [:index, :destroy]do
+    resources :cards,  only: [:index, :new]do
       collection do
-        post 'delete', to: 'card#delete'
+        post 'delete1', to: 'cards#delete1'
+        post 'delete2', to: 'cards#delete2'
+        post 'delete3', to: 'cards#delete3' 
       end
     end
   end

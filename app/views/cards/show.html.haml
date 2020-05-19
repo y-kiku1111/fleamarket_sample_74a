@@ -31,7 +31,6 @@
         支払い方法
         - if Card.where(user: current_user).exists?
           =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
-          -# =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
         
           .purchase-method__how
             .purchase-method__how--name
@@ -45,12 +44,9 @@
               = @default_card_information.brand
         - else
           =link_to "新規登録", new_product_card_path(@product.id), method: :get , class: "change"
-          決済方法を登録してください
-
-        
 
     %section.purchase-shipping
-      .purchase-shipping__titile
+      .purchase-shipping__title
         配送先
         =link_to "変更する", new_product_path, method: :get , class: "change"
 
@@ -61,7 +57,6 @@
           栃木県 那須烏山市 野上988-1 プラシードC 101号
         .purchase-shipping__where--name
           Robby Naish
-
 
     .purchase-btn
       - if Card.where(user: current_user).exists?
