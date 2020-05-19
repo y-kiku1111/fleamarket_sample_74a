@@ -4,6 +4,7 @@ class CardsController < ApplicationController
   before_action :get_payjp_info
   before_action :set_product, only: [:create, :show, :pay, :new]
   before_action :set_cards, only: [:delete, :index, :show, :new]
+  before_action :set_user, only: [:show]
 
   def set_cards
     @card = Card.find_by(user_id: current_user.id)
@@ -27,6 +28,10 @@ class CardsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:product_id])
+  end
+
+  def set_user
+    @user = User.find(current_user.id)
   end
 
   def pay
