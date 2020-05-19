@@ -5,7 +5,7 @@ document.addEventListener(
       Payjp.setPublicKey("pk_test_3ec52b536b224b110b5fd750"); 
       let btn = document.getElementById("token_submit"); 
       btn.addEventListener("click", e => { 
-        e.preventDefault(); /
+        e.preventDefault(); 
         let card = {
           number: document.getElementById("card_number").value,
           cvc: document.getElementById("cvc").value,
