@@ -36,7 +36,7 @@
           %li.Header__right-list
             = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'Header__navBtn'
           %li.Header__right-list
-          = link_to 'マイページ', "/users/#{current_user.id}",class:'Header__navBtn'
+          = link_to 'マイページ', user_path(current_user.id),class:'Header__navBtn'
         -else
           %li.Header__right-list
             = link_to 'ログイン',user_session_path,method: :post, class:'Header__navBtn'

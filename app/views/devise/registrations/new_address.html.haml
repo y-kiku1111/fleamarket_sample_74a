@@ -1,0 +1,61 @@
+.sign-up-wrapper
+  %header.sign-up__header
+    = link_to '#' do
+      = image_tag "/images/logo/logo.png"
+
+  %main.sign-up-content
+    %h2.sign-up-content__head 商品送付先情報入力
+    %section.sign-up-content__main
+
+      .sign-up-content__main__form
+        = form_for @address do |f| 
+
+          .sign-up-content__main__form__group
+            = f.label :postal_code,"郵便番号"
+            %span.sign-up-content__main__form__group__require 必須
+            %br/
+            = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code",placeholder:"例)111-1111", class: "sign-up-content__main__form__group__field"
+
+          .sign-up-content__main__form__group
+            = f.label :prefecture_id,"都道府県"
+            %span.sign-up-content__main__form__group__require 必須
+            %br/           
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: "sign-up-content__main__form__group__input"
+            = icon 'fas', 'chevron-down',class:"sign-up-content__main__form__group__icon4"
+
+          .sign-up-content__main__form__group
+            = f.label :city,"市町村"
+            %span.sign-up-content__main__form__group__require 必須
+            %br/
+            = f.text_field :city, autofocus: true, autocomplete: "city",placeholder:"例)横浜市港北区", class: "sign-up-content__main__form__group__field"
+
+          .sign-up-content__main__form__group
+            = f.label :other,"番地"
+            %span.sign-up-content__main__form__group__require 必須
+            %br/
+            = f.text_field :other, autofocus: true, autocomplete: "other",placeholder:"例)●● 1-1-1", class: "sign-up-content__main__form__group__field"
+
+          .sign-up-content__main__form__group
+            = f.label :building_name,"建物名"
+            %span.sign-up-content__main__form__group__any 任意
+            %br/
+            = f.text_field :building_name, autofocus: true, autocomplete: "building_name",placeholder:"例)●●マンション　111号室", class: "sign-up-content__main__form__group__field"
+
+          .sign-up-content__main__form__group
+            %p.sign-up-content__main__form__group__info ※ 商品情送付先報情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .sign-up-content__main__form__actions
+            = f.submit "新規登録",class:"sign-up-content__main__form__actions__button"
+
+  %footer.sign-up-content__footer
+    .sign-up-content__footer__other
+      %span プライバシーポリシー
+      %span フリマアプリ規約
+      %span 特定商取引に関する表記
+    .sign-up-content__footer__logo
+      = link_to '#' do
+        = image_tag "/images/logo/logo.png"
+    .sign-up-content__footer__name
+      %p &copy Furimaapuri
+
+
+
