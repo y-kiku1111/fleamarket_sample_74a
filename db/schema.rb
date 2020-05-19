@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_082721) do
+ActiveRecord::Schema.define(version: 2020_05_11_143250) do
+
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
     t.string "city", null: false
@@ -39,6 +40,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_082721) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text", null: false
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_082721) do
     t.datetime "updated_at", null: false
     t.string "brand"
     t.integer "exhibitor_user_id", null: false
-    t.integer "buyer_user_id", null: false
+    t.integer "buyer_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -81,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_082721) do
     t.string "last_name_furigana", null: false
     t.string "profile_photo"
     t.date "birthday", null: false
-    t.string "tel_number", null: false
+    t.string "tel_number"
     t.text "introduction"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
