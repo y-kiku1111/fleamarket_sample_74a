@@ -35,11 +35,14 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    if current_user.id == @product.exhibitor_user_id
-      @product.destroy
+    if current_user.id == @product.exhibitor_user_id && @product.destroy
       redirect_to root_path
     else
-      redirect_to root_path
+      @parents = Category.where(ancestry: nil)  
+      @product = Product.find(params[:id])
+      @comments = Comment.where(product_id: params[:id])
+  
+      render :show
     end
 
   end
