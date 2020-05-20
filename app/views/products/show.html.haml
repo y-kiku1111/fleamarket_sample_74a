@@ -11,8 +11,10 @@
           .items-box_photo__sold
             .items-box_photo__sold__inner SOLD
       .main-content__photoSub
-        = image_tag "/images/products/sample4.jpeg", class:'main-content__photoSub--small'
-        = image_tag "/images/products/sample6.jpeg", class:'main-content__photoSub--small'
+        -#= image_tag @product.product_photos[1].photo.url, class:'main-content__photoSub--small'
+        - @product.product_photos.each do |photo|
+        
+          = image_tag photo.photo.url, class:'main-content__photoSub--small'
 
       .main-content__price
         %p.lower-message__content
@@ -42,37 +44,37 @@
           %tr
             %th 出品者
             %td
-              = link_to "hoge", user_path , method: :post , class: ""
-               
+              = link_to @user.nickname, user_path , method: :post , class: ""
               %div
           %tr
             %th カテゴリー
             %td
-              = link_to "スポーツ・レジャー", user_path , method: :post , class: ""
+              = link_to @category.parent.parent.name, user_path , method: :post , class: ""
               %br
-                = link_to "その他スポーツ",user_path , method: :post , class: ""
+                = link_to @category.parent.name,user_path , method: :post , class: ""
                 %br
-                  = link_to "その他",user_path , method: :post , class: ""
+                  = link_to @category.name,user_path , method: :post , class: ""
           %tr
             %th ブランド
             %td
+              = @product.brand
           %tr
             %th 商品の状態
-            %td 新品/未使用
+            %td 
+              = @product.status
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
-          %tr
-            %th 配送の方法
-            %td 着払い（購入者負担）
+            %td 
+              = @product.bear
           %tr
             %th 配送元地域
-            %td 青森県
+            %td 
+              = @user.address.prefecture.name
           %tr
             %th 発送日の目安
             %td 
               = @product.days
-              日で発送
+              
 
       .main-content__btn
         %button.main-content__btn--like{id: "like-btn"}

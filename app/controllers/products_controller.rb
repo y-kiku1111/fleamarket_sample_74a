@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
     @parents = Category.where(ancestry: nil)  
     @product = Product.find(params[:id])
     @comments = Comment.where(product_id: params[:id])
+    @user = User.find(@product.exhibitor_user_id)
+    @category = Category.find(@product.category_id)
   end
 
   def new
