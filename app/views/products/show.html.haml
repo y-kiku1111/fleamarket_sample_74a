@@ -10,10 +10,9 @@
         -if @product.buyer_user_id.present? 
           .items-box_photo__sold
             .items-box_photo__sold__inner SOLD
+
       .main-content__photoSub
-        -#= image_tag @product.product_photos[1].photo.url, class:'main-content__photoSub--small'
         - @product.product_photos.each do |photo|
-        
           = image_tag photo.photo.url, class:'main-content__photoSub--small'
 
       .main-content__price
