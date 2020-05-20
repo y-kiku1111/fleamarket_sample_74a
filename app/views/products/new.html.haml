@@ -12,24 +12,31 @@
           %span.required 必須
           %p.upload_limit 最大10枚までアップロードできます
           %div
-            .file__box
-              #image-box
-                #previews
-                  - if @product.persisted?
-                    - @product.photos.each_with_index do |photo, i|
-                      = image_tag product.photo.url, data: { index: i }, width: "100", height: '100'
-                = form.fields_for :product_photos do |image|
-                  .js-file_group{"data-index" => image.index}
-                    = image.file_field :photo, class: 'js-file'
-                    %br
-                    %span.js-remove 削除
-                  - if @product.persisted?
-                    = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-                - if @product.persisted?
-                  .js-file_group{"data-index" => @product.photos.count}
-                    = file_field_tag :photo, name: "product[images_attributes][#{@product.photos.count}][photo]", class: 'js-file'
-                    .js-remove 削除
-
+            = form.fields_for :product_photos, class:"dropzone-box" do |image|
+              #preview
+                .dropzone-area
+                  = image.label :image, class: "dropzone-box", for: "upload-image" do
+                    .input_area
+                      = image.file_field :image, multiple: true, name: 'product_photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                    %p ここをクリックしてください
+            -# .file__box
+            -#   #image-box
+            -#     #previews
+            -#       - if @product.persisted?
+            -#         - @product.photos.each_with_index do |photo, i|
+            -#           = image_tag product.photo.url, data: { index: i }, width: "100", height: '100'
+            -#     = form.fields_for :product_photos do |image|
+            -#       .js-file_group{"data-index" => image.index}
+            -#         = image.file_field :photo, class: 'js-file'
+            -#         %br
+            -#         %span.js-remove 削除
+            -#       - if @product.persisted?
+            -#         = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+            -#     - if @product.persisted?
+            -#       .js-file_group{"data-index" => @product.photos.count}
+            -#         = file_field_tag :photo, name: "product[images_attributes][#{@product.photos.count}][photo]", class: 'js-file'
+            -#         .js-remove 削除
+ 
         .new_page_main__name
           %span.label_title
             商品名
@@ -126,4 +133,6 @@
 
     .new_page_footer__name
       %p &copy FurimaApuri
+  
+
 
