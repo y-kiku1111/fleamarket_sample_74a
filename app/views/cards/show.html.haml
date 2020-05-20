@@ -1,79 +1,78 @@
-%body.post-template
+-# %body.post-template
 
-  %header.purchase-confirm
-    =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "header-icon" 
+-#   %header.purchase-confirm
+-#     =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "header-icon" 
 
-  .wrapper-purchase-confirm
-    %h2.title
-      購入内容の確認
+-#   .wrapper-purchase-confirm
+-#     %h2.title
+-#       購入内容の確認
     
-    %section.product-info
-      %img.product-info__photo{:src => "https://static.mercdn.net/item/detail/orig/photos/m62908304477_1.jpg?1588653656"}/
-      .product-info__name
-        =@product.name
+-#     %section.product-info
+-#       = image_tag @product.product_photos[0].photo.url, class:"item-main-content__photo--big"
+-#       .product-info__name
+-#         =@product.name
 
-    %section.product-info-sub
-      .product-info-sub__price
-        ="¥"+ "#{@product.price}"
-      .main-content-sub__tax 
-        (税込)
-      .main-content-sub__shipFee 
-        送料込み
+-#     %section.product-info-sub
+-#       .product-info-sub__price
+-#         ="¥"+ "#{@product.price}"
+-#       .main-content-sub__tax 
+-#         (税込)
+-#       .main-content-sub__shipFee 
+-#         = @product.bear
 
-    %section.product-price
-      .product-price__title
-        支払い金額
-      .product-price__amount
-        ="¥"+ "#{@product.price}"
+-#     %section.product-price
+-#       .product-price__title
+-#         支払い金額
+-#       .product-price__amount
+-#         ="¥"+ "#{@product.price}"
 
-    %section.purchase-method
-      .purchase-method__titile
-        支払い方法
-        - if Card.where(user: current_user).exists?
-          =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
-          -# =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
+-#     %section.purchase-method
+-#       .purchase-method__titile
+-#         支払い方法
+-#         - if Card.where(user: current_user).exists?
+-#           =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
         
-          .purchase-method__how
-            .purchase-method__how--name
-              クレジットカード
-            .purchase-method__how--number
-              = "**** **** **** " + "#{@default_card_information.last4}"
-            .purchase-method__how--exp
-              = "有効期限"  + "#{@default_card_information.exp_month}"+"/" "#{@default_card_information.exp_year}"
-            .purchase-method__how--logo
-              = icon('fas', 'credit-card')
-              = @default_card_information.brand
-        - else
-          =link_to "新規登録", new_product_card_path(@product.id), method: :get , class: "change"
-          決済方法を登録してください
+-#           .purchase-method__how
+-#             .purchase-method__how--name
+-#               クレジットカード
+-#             .purchase-method__how--number
+-#               = "**** **** **** " + "#{@default_card_information.last4}"
+-#             .purchase-method__how--exp
+-#               = "有効期限"  + "#{@default_card_information.exp_month}"+"/" "#{@default_card_information.exp_year}"
+-#             .purchase-method__how--logo
+-#               = icon('fas', 'credit-card')
+-#               = @default_card_information.brand
+-#         - else
+-#           =link_to "新規登録", new_product_card_path(@product.id), method: :get , class: "change"
 
-        
+-#     %section.purchase-shipping
+-#       .purchase-shipping__title
+-#         配送先
+-#         =link_to "変更する", new_product_path, method: :get , class: "change"
 
-    %section.purchase-shipping
-      .purchase-shipping__titile
-        配送先
-        =link_to "変更する", new_product_path, method: :get , class: "change"
+-#       .purchase-shipping__where
+-#         .purchase-shipping__where--pcode
+-#           = "〒" + "#{@user.address.postal_code}"
+-#         .purchase-shipping__where--address
+-#           = @user.address.prefecture.name
+-#           = @user.address.city
+-#           = @user.address.other
+-#           = @user.address.building_name
 
-      .purchase-shipping__where
-        .purchase-shipping__where--pcode
-          〒321-0634
-        .purchase-shipping__where--address
-          栃木県 那須烏山市 野上988-1 プラシードC 101号
-        .purchase-shipping__where--name
-          Robby Naish
+-#         .purchase-shipping__where--name
+-#           = @user.nickname
 
+-#     .purchase-btn
+-#       - if Card.where(user: current_user).exists?
+-#         =link_to "購入する", pay_product_cards_path(@product.id), method: :post , class: "purchase"
+-#       - else
+-#         決済方法を登録してください
 
-    .purchase-btn
-      - if Card.where(user: current_user).exists?
-        =link_to "購入する", pay_product_cards_path(@product.id), method: :post , class: "purchase"
-      - else
-        決済方法を登録してください
+-#   %footer.purchase-confirma
+-#     .purchase-confirm__rule
+-#       プライバシーポリシー FURIMA利用規約
+-#       %br
+-#         特定商取引に関する表記
+-#       =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "footer-icon" 
 
-  %footer.purchase-confirma
-    .purchase-confirm__rule
-      プライバシーポリシー FURIMA利用規約
-      %br
-        特定商取引に関する表記
-      =link_to image_tag(src="logo/logo.png", height: "50", width: "auto"), "/", class: "footer-icon" 
-
-      
+    
