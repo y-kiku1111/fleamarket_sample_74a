@@ -1,0 +1,44 @@
+.card-index{
+  height: 100%;
+
+  .sub-header{
+    text-align: center;
+    height: 120px;
+    line-height: 150px;
+    
+    &__logo{
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+
+  .main-index{
+    height: calc(100% - 120px - 120px);
+    margin: auto;
+    text-align: center;
+
+    &__title{
+      font-size: 22px;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid white;
+    }
+
+    .purchase-method__how{
+      padding-bottom: 15px;
+    }
+  }
+
+  .sub-footer{
+    text-align: center;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__logo{
+      height: 50px;
+      line-height: 50px;    
+    }
+  }
+}

@@ -1,22 +1,21 @@
 class ProductsController < ApplicationController
 
   def index
-
     @products = Product.all.includes(:product_photos).order(created_at: :desc)
-    @parents = Category.where(ancestry: nil)  
-
+    @parents = Category.where(ancestry: nil)
   end
 
   def show
-    @parents = Category.where(ancestry: nil)  
+    @parents = Category.where(ancestry: nil)
     @product = Product.find(params[:id])
     @comments = Comment.where(product_id: params[:id])
+    @user = User.find(@product.exhibitor_user_id)
+    @category = Category.find(@product.category_id)
   end
 
   def new
     @product = Product.new
     @product.product_photos.build
-
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     @category_parent_array.unshift("---")
   end
@@ -27,8 +26,7 @@ class ProductsController < ApplicationController
       redirect_to root_path
     else
       @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-      @category_parent_array.unshift("---")      
-      
+      @category_parent_array.unshift("---")
       render :new
     end
   end
@@ -54,9 +52,10 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
-  
   private
+
   def product_params
     params.require(:product).permit( :name, :explanation, :category_id, :status, :bear, :brand, :days, :price, product_photos_attributes: [:photo, :_destroy, :id]).merge(exhibitor_user_id: current_user.id)
   end
+
 end
