@@ -44,16 +44,16 @@
           %tr
             %th 出品者
             %td
-              = link_to @user.nickname, user_path , method: :post , class: ""
+              = link_to @user.nickname, product_path, class: ""
               %div
           %tr
             %th カテゴリー
             %td
-              = link_to @category.parent.parent.name, user_path , method: :post , class: ""
+              = link_to @category.parent.parent.name, product_path, class: ""
               %br
-                = link_to @category.parent.name,user_path , method: :post , class: ""
+                = link_to @category.parent.name, product_path, class: ""
                 %br
-                  = link_to @category.name,user_path , method: :post , class: ""
+                  = link_to @category.name, product_path, class: ""
           %tr
             %th ブランド
             %td
