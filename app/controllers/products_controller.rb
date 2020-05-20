@@ -39,7 +39,6 @@ class ProductsController < ApplicationController
       redirect_to root_path
     else
       @parents = Category.where(ancestry: nil)  
-      @product = Product.find(params[:id])
       @comments = Comment.where(product_id: params[:id])
   
       render :show
