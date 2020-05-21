@@ -10,6 +10,7 @@ FactoryBot.define do
     last_name              {"山田"}
     last_name_furigana     {"やまだ"}
     birthday               {"19900925"}
+    
 
   end
- end
+end
