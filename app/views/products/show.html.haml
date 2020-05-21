@@ -30,10 +30,12 @@
           -if (current_user.id == @product.exhibitor_user_id)
             %button.main-content__purchase--btn
               表品の修正
+            %button.main-content__purchase--btn
+              = link_to '削除',product_path, method: :delete
+              
           - else
             %button.main-content__purchase--btn
               = link_to "購入に進む" ,product_cards_path(@product.id), method: :post
-              -# = link_to "購入に進む" ,product_card_path(@product.id), method: :get
 
       .main-content__description
         = @product.explanation
@@ -129,4 +131,3 @@
         = link_to "もっと見る", "/" , method: :post 
 
   = render "/partial/footer"
-

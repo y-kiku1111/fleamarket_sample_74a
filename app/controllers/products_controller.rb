@@ -32,8 +32,16 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    redirect_to root_path
+    @product = Product.find(params[:id])
+    if current_user.id == @product.exhibitor_user_id && @product.destroy
+      redirect_to root_path
+    else
+      @parents = Category.where(ancestry: nil)  
+      @comments = Comment.where(product_id: params[:id])
+  
+      render :show
+    end
+
   end
 
   def get_category_children
