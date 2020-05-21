@@ -1,10 +1,8 @@
 class ProductsController < ApplicationController
 
   def index
-
     @products = Product.all.includes(:product_photos).order(created_at: :desc)
     @parents = Category.where(ancestry: nil)  
-
   end
 
   def show
@@ -22,12 +20,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    if product.save!
+    @product = Product.new(product_params)
+    if @product.save
       redirect_to root_path
     else
       @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-      @category_parent_array.unshift("---")      
+      @category_parent_array.unshift("---")
       
       render :new
     end
@@ -35,6 +33,30 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+
+    @category_parent_array = Category.where(ancestry: nil)
+    @grandchildren_category = @product.category
+    @children_category = @grandchildren_category.parent
+
+    @category_children_array = Category.where(ancestry: @children_category.ancestry)
+    @category_grandchildren_array = Category.where(ancestry: @grandchildren_category.ancestry)
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    binding.pry
+    if @product.update!(product_params)
+      redirect_to root_path
+    else
+      @category_parent_array = Category.where(ancestry: nil)
+      @grandchildren_category = @product.category
+      @children_category = @grandchildren_category.parent
+
+      @category_children_array = Category.where(ancestry: @children_category.ancestry)
+      @category_grandchildren_array = Category.where(ancestry: @grandchildren_category.ancestry)
+      
+      render :edit
+    end
   end
 
   def destroy
@@ -44,6 +66,10 @@ class ProductsController < ApplicationController
 
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  def get_edit_category_children
+    @edit_category_children = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
   end
 
   def get_category_grandchildren
