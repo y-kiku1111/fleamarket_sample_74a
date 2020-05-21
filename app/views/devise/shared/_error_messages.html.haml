@@ -7,9 +7,3 @@
     %ul
       - resource.errors.full_messages.each do |message|
         %li= message
-
-- if @address.errors.any?
-  #error_explanation
-    %ul
-      - @address.errors.full_messages.each do |message|
-        %li= message
