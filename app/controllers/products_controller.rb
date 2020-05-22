@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all.includes(:product_photos).order(created_at: :desc)
@@ -7,7 +8,6 @@ class ProductsController < ApplicationController
 
   def show
     @parents = Category.where(ancestry: nil)
-    @product = Product.find(params[:id])
     @comments = Comment.where(product_id: params[:id])
     @user = User.find(@product.exhibitor_user_id)
     @category = Category.find(@product.category_id)
@@ -33,8 +33,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
-
     @category_parent_array = Category.where(ancestry: nil)
     @grandchildren_category = @product.category
     @children_category = @grandchildren_category.parent
@@ -44,7 +42,6 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to root_path
     else
@@ -60,7 +57,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     if current_user.id == @product.exhibitor_user_id && @product.destroy
       redirect_to root_path
     else
@@ -88,6 +84,10 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit( :name, :explanation, :category_id, :status, :bear, :brand, :days, :price, product_photos_attributes: [:photo, :_destroy, :id]).merge(exhibitor_user_id: current_user.id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
 end
