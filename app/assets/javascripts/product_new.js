@@ -27,7 +27,6 @@ $(function(){
     $('#image-box').on('change', '.js-file', function(e) {
       const targetIndex = $(this).parent().data('index');
       const file = e.target.files[0];
-      console.log(file)
       const blobUrl = window.URL.createObjectURL(file);
   
       if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
@@ -51,7 +50,6 @@ $(function(){
       if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
     });
   });
-
 
   // 金額の自動計算
 
