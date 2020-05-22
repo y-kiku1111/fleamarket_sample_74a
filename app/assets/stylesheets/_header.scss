@@ -73,6 +73,8 @@
   }
   &__left-nav{
     display: flex;
+    z-index: 2;
+    
     &--category{
       position: absolute;
     }
