@@ -4,9 +4,13 @@
   %h1.sub-header
     = link_to root_path do
       = image_tag "/images/logo/logo.png", class: "sub-header__logo"
+
   %main.mypage-contents.clearfix.buypage
-    
     .signup-main.buypage
+
+  %main.mypage-contents.clearfix
+    = render "users/mypage_side"
+    .signup-main
       %section.mypage-content__chapter-container
         %h2.signup-main__chapter-head
           支払い方法
@@ -61,6 +65,7 @@
 
             #card_token
             = submit_tag "登録する" ,id: "token_submit", class: "top__margin"
+
   %footer.sub-footer
     .sub-footer__logos
       = link_to root_path do

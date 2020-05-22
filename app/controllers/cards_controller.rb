@@ -3,9 +3,10 @@ class CardsController < ApplicationController
 
   before_action :get_payjp_info
   before_action :set_product, only: [:create, :show, :pay, :new]
-  before_action :set_cards, only: [:delete, :index, :show, :new]
+  before_action :set_cards, only: [:delete, :index, :show]
   before_action :set_create, only: [:create, :create1]
   before_action :set_parents, only: :new1
+  before_action :authenticate_user!, only: [:create, :create1, :show, :pay, :new, :delete, ]
 
   def set_cards
     @card = Card.find_by(user_id: current_user.id)
