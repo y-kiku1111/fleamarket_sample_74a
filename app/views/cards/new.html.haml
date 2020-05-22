@@ -1,12 +1,15 @@
 %script{src: "https://js.pay.jp/", type: "text/javascript"}
-
+%body.card-index.buypage
 .mypage
-  %main.mypage-contents.clearfix
-    = render "users/mypage_side"
-    .signup-main
+  %h1.sub-header
+    = link_to root_path do
+      = image_tag "/images/logo/logo.png", class: "sub-header__logo"
+  %main.mypage-contents.clearfix.buypage
+    
+    .signup-main.buypage
       %section.mypage-content__chapter-container
         %h2.signup-main__chapter-head
-          クレジットカード情報入力
+          支払い方法
         = form_with model: @card, url: "/products/#{@product.id}/cards", method: 'POST', id: 'charge-form', class: 'signup-main__inner--registration-form', novalidate: 'novalidate', html: { name: 'inputForm' } do |f|
           .signup-main__content
             .signup-main__form-group
@@ -57,4 +60,9 @@
                   カード背面の番号とは？
 
             #card_token
-            = submit_tag "追加する" ,id: "token_submit", class: "top__margin"
+            = submit_tag "登録する" ,id: "token_submit", class: "top__margin"
+  %footer.sub-footer
+    .sub-footer__logos
+      = link_to root_path do
+        = image_tag "/images/logo/logo.png", class: "sub-footer__logo"
+    %p &copy FurimaApuri
