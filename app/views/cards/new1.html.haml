@@ -7,7 +7,7 @@
       %section.mypage-content__chapter-container
         %h2.signup-main__chapter-head
           クレジットカード情報入力
-        = form_with model: @card, url: "/products/#{@product.id}/cards", method: 'POST', id: 'charge-form', class: 'signup-main__inner--registration-form', novalidate: 'novalidate', html: { name: 'inputForm' } do |f|
+        = form_with model: @card, url: create1_user_cards_path(current_user.id), method: 'POST', id: 'charge-form', class: 'signup-main__inner--registration-form', novalidate: 'novalidate', html: { name: 'inputForm' } do |f|
           .signup-main__content
             .signup-main__form-group
               %label{ for: 'payment_card_no' } カード番号

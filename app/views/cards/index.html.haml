@@ -1,48 +1,59 @@
-.signup-main
-  %section.mypage-content__chapter-container
-    -# = @cards.customer_id[0]
-    -# = @cards.customer_id[1]
-    -# = @cards.customer_id[2]
+%body.card-index
+  %h1.sub-header
+    = link_to root_path do
+      = image_tag "/images/logo/logo.png", class: "sub-header__logo"
 
-    %h2.signup-main__chapter-head
-    クレジットカード一覧
+  %section.main-index
+    %h2.main-index__title
+      クレジットカード一覧
 
-    = form_with model: @cards, url: delete_user_cards_path(current_user.id), method: 'POST', id: 'test' do |f|
-      - if @cnt >= 1
-        .purchase-method__how
-          = submit_tag "削除する" 
-          
-          .purchase-method__how--name
-            クレジットカード 1
-          .purchase-method__how--number
-            = "**** **** **** " + "#{@default_card_information1.last4}"
-          .purchase-method__how--exp
-            = "有効期限"  + "#{@default_card_information1.exp_month}"+"/" "#{@default_card_information1.exp_year}"
-          .purchase-method__how--logo
-            = icon('fas', 'credit-card')
-            = @default_card_information1.brand
-        = submit_tag "Delete" ,id: "token_submit", class: "top__margin"
+    %h2.main-index__reg
+      =link_to "クレジットカードを登録する", new1_user_cards_path(current_user.id), method: :get , class: "change"
 
-      - if @cnt >= 2
-        .purchase-method__how
-          .purchase-method__how--name
-            クレジットカード 2
-          .purchase-method__how--number
-            = "**** **** **** " + "#{@default_card_information2.last4}"
-          .purchase-method__how--exp
-            = "有効期限"  + "#{@default_card_information2.exp_month}"+"/" "#{@default_card_information2.exp_year}"
-          .purchase-method__how--logo
-            = icon('fas', 'credit-card')
-            = @default_card_information2.brand
+    - if @cnt >= 1
+      %h3.purchase-method__how
+        .purchase-method__how--name
+          ①クレジットカード
+          = link_to delete1_user_cards_path(current_user.id), method: "post", class:"blue" do
+            削除
+        .purchase-method__how--number
+          = "**** **** **** " + "#{@default_card_information1.last4}"
+        .purchase-method__how--exp
+          = "有効期限"  + "#{@default_card_information1.exp_month}"+"/" "#{@default_card_information1.exp_year}"
+        .purchase-method__how--logo
+          = icon('fas', 'credit-card')
+          = @default_card_information1.brand
 
-      - if @cnt >=3
-        .purchase-method__how
-          .purchase-method__how--name
-            クレジットカード 3
-          .purchase-method__how--number
-            = "**** **** **** " + "#{@default_card_information3.last4}"
-          .purchase-method__how--exp
-            = "有効期限"  + "#{@default_card_information3.exp_month}"+"/" "#{@default_card_information3.exp_year}"
-          .purchase-method__how--logo
-            = icon('fas', 'credit-card')
-            = @default_card_information3.brand
+    - if @cnt >= 2
+      %h3.purchase-method__how
+        .purchase-method__how--name
+          ②クレジットカード
+          = link_to delete2_user_cards_path(current_user.id), method: "post", class:"blue" do
+            削除
+        .purchase-method__how--number
+          = "**** **** **** " + "#{@default_card_information2.last4}"
+        .purchase-method__how--exp
+          = "有効期限"  + "#{@default_card_information2.exp_month}"+"/" "#{@default_card_information2.exp_year}"
+        .purchase-method__how--logo
+          = icon('fas', 'credit-card')
+          = @default_card_information2.brand
+
+    - if @cnt >=3
+      %h3.purchase-method__how
+        .purchase-method__how--name
+          ③クレジットカード
+          = link_to delete3_user_cards_path(current_user.id), method: "post", class:"blue" do
+            削除
+        .purchase-method__how--number
+          = "**** **** **** " + "#{@default_card_information3.last4}"
+        .purchase-method__how--exp
+          = "有効期限"  + "#{@default_card_information3.exp_month}"+"/" "#{@default_card_information3.exp_year}"
+        .purchase-method__how--logo
+          = icon('fas', 'credit-card')
+          = @default_card_information3.brand
+
+  %footer.sub-footer
+    .sub-footer__logos
+      = link_to root_path do
+        = image_tag "/images/logo/logo.png", class: "sub-footer__logo"
+    %p &copy FurimaApuri
