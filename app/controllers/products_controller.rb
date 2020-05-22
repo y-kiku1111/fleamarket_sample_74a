@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all.includes(:product_photos).order(created_at: :desc)
     @parents = Category.where(ancestry: nil)
+    
   end
 
   def show
@@ -22,11 +23,14 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
-    if product.save!
+    if product.save
       redirect_to root_path
     else
+      @product = Product.new
+      @product.product_photos.build
       @category_parent_array = Category.where(ancestry: nil).pluck(:name)
       @category_parent_array.unshift("---")
+      
       render :new
     end
   end
