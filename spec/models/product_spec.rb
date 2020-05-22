@@ -5,11 +5,9 @@ RSpec.describe Product do
   let(:category){create(:category)}
   describe '#create' do
     it "全て揃っている時出品できる" do
-      # let(:product) { FactoryBot.create(:product_photo) }
       product = build(:product, category_id: category.id, exhibitor_user_id: user.id )
       product.product_photos.build{File.open("#{Rails.root}/public/images/sample.3.jpg")}
       expect(product).to be_valid
-      # expect(build(:product, product_photos:[build(:product_photo)])).to be valid
     end
 
     it "photoが空だと出品できない" do
@@ -83,8 +81,6 @@ RSpec.describe Product do
       product.valid?
       expect(product.errors[:explanation]).to include("は1000文字以内で入力してください")
     end
-
-    # it "" do
   end
 end
     

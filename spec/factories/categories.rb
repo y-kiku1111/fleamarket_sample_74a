@@ -10,7 +10,7 @@ FactoryBot.define do
       factory :grand_category do |g|
         g.name {"ddddd"}
       end
-  
+      
     end 
   end
 end
