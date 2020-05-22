@@ -6,15 +6,16 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @parents = Category.where(ancestry: nil)  
+    @parents = Category.where(ancestry: nil)
     @product = Product.find(params[:id])
     @comments = Comment.where(product_id: params[:id])
+    @user = User.find(@product.exhibitor_user_id)
+    @category = Category.find(@product.category_id)
   end
 
   def new
     @product = Product.new
     @product.product_photos.build
-
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     @category_parent_array.unshift("---")
   end
@@ -26,7 +27,7 @@ class ProductsController < ApplicationController
     else
       @category_parent_array = Category.where(ancestry: nil).pluck(:name)
       @category_parent_array.unshift("---")
-      
+
       render :new
     end
   end
@@ -59,8 +60,16 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    redirect_to root_path
+    @product = Product.find(params[:id])
+    if current_user.id == @product.exhibitor_user_id && @product.destroy
+      redirect_to root_path
+    else
+      @parents = Category.where(ancestry: nil)  
+      @comments = Comment.where(product_id: params[:id])
+  
+      render :show
+    end
+
   end
 
   def get_category_children
@@ -75,9 +84,10 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
-  
   private
+
   def product_params
     params.require(:product).permit( :name, :explanation, :category_id, :status, :bear, :brand, :days, :price, product_photos_attributes: [:photo, :_destroy, :id]).merge(exhibitor_user_id: current_user.id)
   end
+
 end
