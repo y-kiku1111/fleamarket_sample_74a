@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_parents, only: [:show, :destroy]
+  before_action :set_parents
 
   def show
   end
