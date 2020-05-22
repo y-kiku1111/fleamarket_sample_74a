@@ -25,6 +25,8 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
+      @product = Product.new
+      @product.product_photos.build
       @category_parent_array = Category.where(ancestry: nil).pluck(:name)
       @category_parent_array.unshift("---")
 

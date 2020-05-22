@@ -5,11 +5,6 @@ FactoryBot.define do
     city                      {"横浜市港北区"}
     postal_code               {"00000000"}
     other                     {"日吉"}
-    
+
   end
-
 end
-
-
-
-
