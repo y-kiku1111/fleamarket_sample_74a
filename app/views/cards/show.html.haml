@@ -29,19 +29,19 @@
     %section.purchase-method
       .purchase-method__titile
         支払い方法
-        - if Card.where(user: current_user).exists?
+        - if Card.where(user_id: current_user.id).exists?
           =link_to "変更する", new_product_card_path(@product.id), method: :get , class: "change"
         
           .purchase-method__how
             .purchase-method__how--name
               クレジットカード
             .purchase-method__how--number
-              = "**** **** **** " + "#{@default_card_information.last4}"
+              = "**** **** **** " + "#{@cardinfo.last4}"
             .purchase-method__how--exp
-              = "有効期限"  + "#{@default_card_information.exp_month}"+"/" "#{@default_card_information.exp_year}"
+              = "有効期限"  + "#{@cardinfo.exp_month}"+"/" "#{@cardinfo.exp_year}"
             .purchase-method__how--logo
               = icon('fas', 'credit-card')
-              = @default_card_information.brand
+              = @cardinfo.brand
         - else
           =link_to "新規登録", new_product_card_path(@product.id), method: :get , class: "change"
 
