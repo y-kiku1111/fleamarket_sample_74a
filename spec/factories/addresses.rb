@@ -7,5 +7,4 @@ FactoryBot.define do
     other                     {"日吉"}
 
   end
-
 end

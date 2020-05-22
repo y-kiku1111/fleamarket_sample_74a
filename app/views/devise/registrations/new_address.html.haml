@@ -9,6 +9,7 @@
 
       .sign-up-content__main__form
         = form_for @address do |f| 
+          = render "devise/shared/error_address_messages", resource: resource
 
           .sign-up-content__main__form__group
             = f.label :postal_code,"郵便番号"

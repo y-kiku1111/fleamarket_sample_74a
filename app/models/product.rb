@@ -18,3 +18,4 @@ class Product < ApplicationRecord
   enum bear: { 送料込み（出品者負担）: 0, 着払い（購入者負担）: 1}
   enum days: { １〜２日で発送: 0, ２〜３日で発送: 1, ４〜７日で発送: 2}
 end
+
