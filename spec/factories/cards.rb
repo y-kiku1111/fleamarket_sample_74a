@@ -5,7 +5,7 @@ FactoryBot.define do
     id  {"1"}
     customer_id {"321"}
     card_id {"123"}
-    user_id
+    user
 
     association :user, factory: :user
     # factory :user_id do

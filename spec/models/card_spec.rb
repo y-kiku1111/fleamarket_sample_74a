@@ -40,7 +40,6 @@ describe Card do
         # let(:user) { FactoryBot.create(:user) }
         # let(:card) { FactoryBot.create(:card, user_id: user.id) }
       # end
-
       # user = build(:user)
       # card = build(:card, user_id: user.id)
       card = FactoryBot.build(:card)

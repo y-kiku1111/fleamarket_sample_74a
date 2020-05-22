@@ -1,6 +1,10 @@
 %script{src: "https://js.pay.jp/", type: "text/javascript"}
 
 .mypage
+  %h1.sub-header
+    = link_to root_path do
+      = image_tag "/images/logo/logo.png", class: "sub-header__logo"
+
   %main.mypage-contents.clearfix
     = render "users/mypage_side"
     .signup-main
@@ -58,3 +62,9 @@
 
             #card_token
             = submit_tag "追加する" ,id: "token_submit", class: "top__margin"
+  
+  %footer.sub-footer
+    .sub-footer__logos
+      = link_to root_path do
+        = image_tag "/images/logo/logo.png", class: "sub-footer__logo"
+    %p &copy FurimaApuri
