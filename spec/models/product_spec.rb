@@ -52,7 +52,7 @@ RSpec.describe Product do
       expect(product.errors[:days]).to include("を入力してください")
     end
 
-    it "priceが300円以下だと出品できない" do
+    it "priceが300円未満だと出品できない" do
       product = build(:product, price: 299)
       product.valid?
       expect(product.errors[:price]).to include("は一覧にありません")
