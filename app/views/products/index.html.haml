@@ -68,7 +68,7 @@
           = image_tag "/images/icon/icon-01.png",class:'feature-size'
         %h3.item__subtitle
           簡単に売り買い
-          %br>/
+          %br
           出来る
         %p.item__detail スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       %section.item
@@ -81,7 +81,7 @@
           = image_tag "/images/icon/icon-04.png",class:'feature-size'
         %h3.item__subtitle
           様々な支払いに
-          %br>/
+          %br
           対応
         %p.item__detail お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
   %section.main__pickup
@@ -93,9 +93,9 @@
       .product-box__lists
         - @products.each do |product|
           .product-box__list
-            = link_to  product_path(product.id), class:'new-product' do
+            = link_to product_path(product.id) , class:'new-product' do
               %figure.product-box__img
-                -unless product.product_photos == nil
+                -if product.persisted?
                   = image_tag product.product_photos[0].photo.url, class:'pickup-size'
                   -if product.buyer_user_id.present? 
                     .items-box_photo__sold

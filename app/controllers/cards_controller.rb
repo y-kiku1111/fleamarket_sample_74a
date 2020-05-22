@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   before_action :get_payjp_info
   before_action :set_product, only: [:create, :show, :pay, :new]
   before_action :set_cards, only: [:delete, :index, :show, :new]
-  before_action :set_user, only: [:show]
+  before_action :set_create, only: [:create, :create1]
 
   def set_cards
     @card = Card.find_by(user_id: current_user.id)
@@ -17,10 +17,13 @@ class CardsController < ApplicationController
         @cnt = @cnt + 1
         if @cnt == 1 
           @default_card_information1 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+          @cardinfo = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
         elsif @cnt == 2
           @default_card_information2 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+          @cardinfo = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
         elsif @cnt == 3
           @default_card_information3 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+          @cardinfo　= Payjp::Customer.retrieve(card.customer_id).cards.data[0]
         end
       end
     end
@@ -30,8 +33,9 @@ class CardsController < ApplicationController
     @product = Product.find(params[:product_id])
   end
 
-  def set_user
+  def show
     @user = User.find(current_user.id)
+
   end
 
   def pay
@@ -46,19 +50,30 @@ class CardsController < ApplicationController
       )
   end
 
-  def create 
+  def set_create
     customer = Payjp::Customer.create(
-      card: params['payjp_token'],
-      metadata: {user_id: current_user.id}
-      ) 
+    card: params['payjp_token'],
+    metadata: {user_id: current_user.id})
     @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-    
+  end
+
+  def create 
     if @card.save
+      flash[:notice] = 'クレジットカードの登録が完了しました。購入画面に戻ります。'
       redirect_to action: "show"
-      flash[:notice] = 'クレジットカードの登録が完了しました'
     else
-      redirect_to action: "new"
       flash[:alert] = 'クレジットカード登録に失敗しました'
+      redirect_to action: "new"
+    end
+  end
+
+  def create1    
+    if @card.save
+      flash[:notice] = 'クレジットカードの登録が完了しました。登録カード一覧に戻ります。'
+      redirect_to action: "index"
+    else
+      flash[:alert] = 'クレジットカード登録に失敗しました'
+      redirect_to action: "new1"
     end
   end
 
@@ -94,4 +109,5 @@ class CardsController < ApplicationController
   def get_payjp_info
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
   end
+
 end

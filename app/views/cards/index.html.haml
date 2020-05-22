@@ -7,6 +7,9 @@
     %h2.main-index__title
       クレジットカード一覧
 
+    %h2.main-index__reg
+      =link_to "クレジットカードを登録する", new1_user_cards_path(current_user.id), method: :get , class: "change"
+
     - if @cnt >= 1
       %h3.purchase-method__how
         .purchase-method__how--name
