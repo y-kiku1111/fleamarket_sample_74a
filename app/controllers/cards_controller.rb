@@ -5,6 +5,7 @@ class CardsController < ApplicationController
   before_action :set_product, only: [:create, :show, :pay, :new]
   before_action :set_cards, only: [:delete, :index, :show, :new]
   before_action :set_create, only: [:create, :create1]
+  before_action :set_parents, only: :index
 
   def set_cards
     @card = Card.find_by(user_id: current_user.id)
@@ -23,7 +24,7 @@ class CardsController < ApplicationController
           @cardinfo = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
         elsif @cnt == 3
           @default_card_information3 = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
-          @cardinfo　= Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+          @cardinfo = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
         end
       end
     end
@@ -36,6 +37,9 @@ class CardsController < ApplicationController
   def show
     @user = User.find(current_user.id)
 
+  end
+
+  def index
   end
 
   def pay
@@ -110,4 +114,7 @@ class CardsController < ApplicationController
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
   end
 
+  def set_parents
+    @parents = Category.where(ancestry: nil) 
+  end
 end
