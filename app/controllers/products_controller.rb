@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :ensure_currect_user]
   before_action :ensure_currect_user, only: [:edit, :update, :destroy]
 
   def index
@@ -94,7 +94,6 @@ class ProductsController < ApplicationController
   end
 
   def ensure_currect_user
-    @product = Product.find(params[:id])
     if current_user.id != @product.exhibitor_user_id
       flash[:notice] = "権限がありません"
       redirect_to product_path(params[:id])
