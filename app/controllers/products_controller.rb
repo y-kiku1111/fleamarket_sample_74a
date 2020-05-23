@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :ensure_currect_user]
+  before_action :ensure_currect_user, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.all.includes(:product_photos).order(created_at: :desc)
@@ -49,7 +50,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to root_path
+      redirect_to product_path(params[:id])
     else
       @category_parent_array = Category.where(ancestry: nil)
       @grandchildren_category = @product.category
@@ -94,6 +95,13 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def ensure_currect_user
+    if current_user.id != @product.exhibitor_user_id
+      flash[:notice] = "権限がありません"
+      redirect_to product_path(params[:id])
+    end
   end
 
 end
