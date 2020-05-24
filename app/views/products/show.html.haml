@@ -122,7 +122,7 @@
       .other-products__links
         .other-products__links--privious
           = icon('fas', 'chevron-left')
-          = link_to "前の商品","/#{@product.id - 1}", method: :get 
+          = link_to "前の商品","#{@product.id - 1}", method: :get 
 
         .other-products__links--next
           = link_to "次の商品","#{@product.id + 1}", method: :get
