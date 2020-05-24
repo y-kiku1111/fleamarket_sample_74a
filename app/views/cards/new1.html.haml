@@ -1,5 +1,5 @@
 %script{src: "https://js.pay.jp/", type: "text/javascript"}
-
+= render "/partial/header"
 .mypage
   %h1.sub-header
     = link_to root_path do
@@ -63,8 +63,16 @@
             #card_token
             = submit_tag "追加する" ,id: "token_submit", class: "top__margin"
 
-  %footer.sub-footer
-    .sub-footer__logos
-      = link_to root_path do
-        = image_tag "/images/logo/logo.png", class: "sub-footer__logo"
-    %p &copy FurimaApuri
+%aside.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text 今すぐ無料ダウンロード
+    .inner__icon
+      = link_to '#', class: 'Btn' do
+        = image_tag "/images/logo/download-on-app-store.png",class:'app'
+      = link_to '#', class: 'Btn' do
+        = image_tag "/images/logo/btn_googleplay.png",class:'app'
+
+
+= render "/partial/footer"

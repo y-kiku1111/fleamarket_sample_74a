@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   root to: "products#index"
-  resources :cards, only: :new
+  resources :cards, only: [:new, :new1]
 
   resources :users, only: [:show, :destroy] do
     collection do

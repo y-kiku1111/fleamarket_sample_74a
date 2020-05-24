@@ -2,24 +2,29 @@
 * {
   box-sizing: border-box;
 }
-
+.card-index.buypage {
+  width: 100%;
+  height: 900px;
+}
 .mypage {
   width: 100%;
   background-color: #f5f5f5;
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
 
-  .sub-header{
-    text-align: center;
-    height: 120px;
-    line-height: 150px;
-    margin: auto;
-    
-    &__logo{
-      height: 50px;
-      line-height: 50px;
+  .mypage-contents.clearfix.buypage {
+    width: 750px;
+    height: 600px;
+    margin: 40px auto 0;
+    border-style: solid;
+    border-width: 0;
+    display: block;
+    padding: 0 0 40px 0;
+    .signup-main.buypage {
+      width: 700px;
+      margin: 0 auto;
     }
   }
-
+  
   .mypage-contents.clearfix {
     width: 1020px;
     margin: auto ;
@@ -36,7 +41,7 @@
         width: 700px;
         height: 562px;
         background-color: #fff;
-        margin-top: 40px;
+       
         .signup-main__chapter-head {
           width: 700px;
           height: 50px;
