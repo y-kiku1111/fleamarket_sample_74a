@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
       @category_parent_array = Category.where(ancestry: nil).pluck(:name)
       @category_parent_array.unshift("---")
     else
-      redirect_to "/users/sign_up"
+      redirect_to root_path, notice: 'ログインもしくはサインインしてください。'
     end
   end
 

@@ -122,10 +122,14 @@
       .other-products__links
         .other-products__links--privious
           = icon('fas', 'chevron-left')
-          = link_to "前の商品","products/#{@product.id - 1}", method: :post 
+          = link_to "前の商品","/#{@product.id - 1}", method: :get 
 
         .other-products__links--next
+<<<<<<< Updated upstream
           = link_to "次の商品","products/#{@product.id + 1}", method: :post 
+=======
+          = link_to "次の商品","#{@product.id + 1}", method: :get
+>>>>>>> Stashed changes
           = icon('fas', 'chevron-right')
 
       .other-products__genre
