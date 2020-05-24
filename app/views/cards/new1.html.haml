@@ -1,10 +1,7 @@
 %script{src: "https://js.pay.jp/", type: "text/javascript"}
 = render "/partial/header"
 .mypage
-  %h1.sub-header
-    = link_to root_path do
-      = image_tag "/images/logo/logo.png", class: "sub-header__logo"
-
+  
   %main.mypage-contents.clearfix
     = render "users/mypage_side"
     .signup-main
