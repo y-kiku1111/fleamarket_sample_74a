@@ -1,6 +1,5 @@
 $(function(){
   // 画像複数枚&プレビュー
-  $(document).on('turbolinks:load', ()=> {
     const buildFileField = (num)=> {
       if (num < 10) {
       const html = `<div data-index="${num}" class="js-file_group">  
@@ -49,7 +48,6 @@ $(function(){
   
       if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
     });
-  });
 
   // 金額の自動計算
 
