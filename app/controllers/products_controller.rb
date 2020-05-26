@@ -12,6 +12,8 @@ class ProductsController < ApplicationController
     @comments = Comment.where(product_id: params[:id])
     @user = User.find(@product.exhibitor_user_id)
     @category = Category.find(@product.category_id)
+    area = Prefecture.all.pluck(:name)
+    @area = area[@product.area - 1]
   end
 
   def new
@@ -90,7 +92,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit( :name, :explanation, :category_id, :status, :bear, :brand, :days, :price, product_photos_attributes: [:photo, :_destroy, :id]).merge(exhibitor_user_id: current_user.id)
+    params.require(:product).permit(:name, :explanation, :category_id, :status, :bear, :area, :brand, :days, :price, product_photos_attributes: [:photo, :_destroy, :id]).merge(exhibitor_user_id: current_user.id)
   end
 
   def set_product
