@@ -76,6 +76,13 @@
           %p
             = form.select :bear, Product.bears.keys
 
+        .new_page_bear
+          %span.label_title
+            発送元地域
+          %span.required 必須
+          %p
+            = form.collection_select :area, Prefecture.all, :id, :name
+
         .new_page_days
           %span.label_title
             発送までの日数
