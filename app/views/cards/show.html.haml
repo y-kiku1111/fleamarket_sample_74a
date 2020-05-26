@@ -51,16 +51,16 @@
 
       .purchase-shipping__where
         .purchase-shipping__where--pcode
-          = "〒" + "#{@user.address.postal_code}"
+          = "〒 " + "#{@user.address.postal_code}"
         .purchase-shipping__where--address
+          住所：
           = @user.address.prefecture.name
           = @user.address.city
           = @user.address.other
           = @user.address.building_name
 
         .purchase-shipping__where--name
-          = @user.nickname
-
+          = "氏名： " + "#{@user.last_name}" + "  " + "#{@user.first_name}"
     .purchase-btn
       - if Card.where(user: current_user).exists?
         =link_to "購入する", pay_product_cards_path(@product.id), method: :post , class: "purchase"
