@@ -6,11 +6,12 @@
   .wrapper-purchase-confirm
     %h2.title
       購入内容の確認
-    
+    .product-info__name
+      %p=@product.name
+
     %section.product-info
       = image_tag @product.product_photos[0].photo.url, class:"item-main-content__photo--big"
-      .product-info__name
-        =@product.name
+
 
     %section.product-info-sub
       .product-info-sub__price
@@ -60,7 +61,7 @@
           = @user.address.building_name
 
         .purchase-shipping__where--name
-          = "氏名： " + "#{@user.last_name}" + "  " + "#{@user.first_name}"
+          = "氏名： " + "#{@user.address.send_last_name}" + "  " + "#{@user.address.send_first_name}"
     .purchase-btn
       - if Card.where(user: current_user).exists?
         =link_to "購入する", pay_product_cards_path(@product.id), method: :post , class: "purchase"
