@@ -12,6 +12,20 @@
           = render "devise/shared/error_address_messages", resource: resource
 
           .sign-up-content__main__form__group
+            = f.label :send_first_name,"送付先のお名前(全角)"
+            %span.sign-up-content__main__form__group__require 必須
+            %br/
+            = f.text_field :send_last_name, autofocus: true, autocomplete: "given-name",placeholder:"例) 山田", class: "sign-up-content__main__form__group__name"
+            = f.text_field :send_first_name, autofocus: true, autocomplete: "given-name",placeholder:"例) 彩", class: "sign-up-content__main__form__group__name"
+
+          .sign-up-content__main__form__group
+            = f.label :send_first_name_furigana,"送付先のお名前かな(全角)"
+            %span.sign-up-content__main__form__group__require 必須
+            %br/
+            = f.text_field :send_last_name_furigana, autofocus: true, autocomplete: "given-name",placeholder:"例) やまだ", class: "sign-up-content__main__form__group__name"
+            = f.text_field :send_first_name_furigana, autofocus: true, autocomplete: "given-name",placeholder:"例) あや", class: "sign-up-content__main__form__group__name"
+
+          .sign-up-content__main__form__group
             = f.label :postal_code,"郵便番号"
             %span.sign-up-content__main__form__group__require 必須
             %br/
